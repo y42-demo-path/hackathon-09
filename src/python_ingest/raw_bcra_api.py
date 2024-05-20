@@ -8,7 +8,9 @@ from y42.v1.decorators import data_loader
 @data_loader
 def raw_bcra_api(context) -> pd.DataFrame:
     url = "https://api.bcra.gob.ar/estadisticas/v2.0/principalesvariables"
-    r = requests.get(url, verify=False)
+    headers = {"Accept-Language": "en-US"}
+    
+    r = requests.get(url, headers=headers, verify=False)
     
     if r.status_code == 200:
         data = r.json() 
