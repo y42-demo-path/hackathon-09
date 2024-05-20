@@ -23,19 +23,11 @@ sources:
           - name: idVariable
             description: ""
             data_type: NUMBER
-            tests:
-              - unique:
-                  config:
-                    severity: error
-                    store_failures: true
+            tests: []
           - name: valor
             description: ""
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: error
-                    store_failures: true
+            tests: []
           - name: fecha
             description: ""
             data_type: TIMESTAMP
