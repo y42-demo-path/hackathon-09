@@ -14,7 +14,7 @@ def raw_exchanges_usdt_ars(context) -> pd.DataFrame:
         data = r.json() 
         df = pd.DataFrame(data)
         df = df.T.reset_index()
-        df["updated_at"] = pd.to_datetime(df["time"], unit="s")
+        #df["updated_at"] = pd.to_datetime(df['time'], unit='s')
         #df = df[["index", "ask", "totalAsk", "bid", "totalBid", "updated_at"]]
     else: 
         logging.error(f"An error occurred. Error status_code: {r.status_code}")
