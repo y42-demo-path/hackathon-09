@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: raw_bcra_api
+    config:
+      y42_source:
+        type: python-ingest
+        function_size: S
+      y42:
+        apiVersion: v3
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+      asset_status: verified
+      tier: tier 3
+    tables:
+      - name: raw_bcra_api
