@@ -9,3 +9,18 @@ models:
     config:
       y42:
         apiVersion: v1
+    columns:
+      - name: VARIABLE_ID
+        data_type: NUMBER
+        tests:
+          - unique
+      - name: VARIABLE_DESCRIPTION
+        data_type: TEXT
+      - name: VARIABLE_VALUE
+        data_type: FLOAT
+        tests:
+          - not_null
+      - name: VARIABLE_AT
+        data_type: DATE
+        tests:
+          - not_null
