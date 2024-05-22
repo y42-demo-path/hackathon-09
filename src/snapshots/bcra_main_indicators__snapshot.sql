@@ -4,12 +4,20 @@
 		config(
 			target_database='HACKATHON_9',
 			target_schema='snapshots',
-			unique_key='idVariable',
+			unique_key='variable_id',
 			strategy='timestamp',
-			updated_at='fecha',
+			updated_at='variable_at',
 		)
 	}}
 
-	select * from {{ source('raw_bcra_api', 'raw_bcra_api') }}
+	select
+	
+	    "idVariable" as variable_id,
+	    "descripcion" as variable_description,
+	    "valor" as variable_value,
+	    "fecha"::date as variable_at
+	
+	from {{ source('raw_bcra_api', 'raw_bcra_api') }}
+	
 
 {% endsnapshot %}
