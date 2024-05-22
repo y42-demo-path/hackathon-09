@@ -30,6 +30,8 @@ stg as (
         ask_price,
         total_ask_price,
 
+        avg(total_ask_price) over() as avg_total_ask_price,
+
         convert_timezone(
             'America/Argentina/Buenos_Aires',
             to_timestamp(update_at::bigint)
