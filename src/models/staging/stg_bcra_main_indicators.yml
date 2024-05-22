@@ -54,3 +54,5 @@ models:
             severity: error
             store_failures: true
             schema: tests_failures
+    description: Wholesale and Retail Exchange Rates of the Central Bank of Argentina
+      (BCRA).

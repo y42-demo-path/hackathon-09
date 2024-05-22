@@ -44,3 +44,5 @@ models:
             severity: error
             store_failures: true
             schema: tests_failures
+    description: Cryptocurrency Exchange Rates (Usdt/Ars) for the main exchanges in
+      Argentina.
