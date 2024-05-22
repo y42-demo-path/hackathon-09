@@ -1,0 +1,58 @@
+version: 2
+
+models:
+  - name: stg_bcra_main_indicators
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+    config:
+      y42:
+        apiVersion: v1
+    columns:
+      - name: VARIABLE_ID
+        data_type: NUMBER
+        tests:
+          - not_null:
+              config:
+                severity: error
+                store_failures: true
+                schema: tests_failures
+          - unique:
+              config:
+                severity: error
+                store_failures: true
+                schema: tests_failures
+      - name: VARIABLE_DESCRIPTION
+        data_type: TEXT
+        tests:
+          - not_null:
+              config:
+                severity: error
+                store_failures: true
+                schema: tests_failures
+      - name: VARIABLE_VALUE
+        data_type: FLOAT
+        tests:
+          - not_null:
+              config:
+                severity: error
+                store_failures: true
+                schema: tests_failures
+      - name: VARIABLE_AT
+        data_type: DATE
+        tests:
+          - not_null:
+              config:
+                severity: error
+    tests:
+      - dbt_utils.recency:
+          datepart: day
+          field: variable_at
+          interval: 1
+          config:
+            severity: error
+            store_failures: true
+            schema: tests_failures
+    description: Wholesale and Retail Exchange Rates of the Central Bank of Argentina
+      (BCRA).
