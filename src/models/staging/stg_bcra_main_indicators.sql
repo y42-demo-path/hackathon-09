@@ -15,6 +15,13 @@ renamed as (
 
     from source
 
+),
+
+filter_exchange_rates as (
+
+    select *
+    from renamed
+    where variable_id in (4, 5)
 )
 
-select * from renamed 
+select * from filtered 
