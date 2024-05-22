@@ -9,3 +9,29 @@ models:
     config:
       y42:
         apiVersion: v1
+    columns:
+      - name: EXCHANGE_NAME
+        data_type: TEXT
+        tests:
+          - not_null
+          - unique
+      - name: BID_PRICE
+        data_type: FLOAT
+        tests:
+          - not_null
+      - name: TOTAL_BID_PRICE
+        data_type: FLOAT
+        tests:
+          - not_null
+      - name: ASK_PRICE
+        data_type: FLOAT
+        tests:
+          - not_null
+      - name: TOTAL_ASK_PRICE
+        data_type: FLOAT
+        tests:
+          - not_null
+      - name: UPDATED_AT
+        data_type: TIMESTAMP_TZ
+        tests:
+          - not_null
