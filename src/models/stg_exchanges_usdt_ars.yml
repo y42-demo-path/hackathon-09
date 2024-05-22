@@ -35,3 +35,12 @@ models:
         data_type: TIMESTAMP_TZ
         tests:
           - not_null
+    tests:
+      - dbt_utils.recency:
+          datepart: minute
+          field: updated_at
+          interval: 30
+          config:
+            severity: error
+            store_failures: true
+            schema: tests_failures
