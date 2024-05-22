@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: stg_exchanges_usdt_ars
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+    config:
+      y42:
+        apiVersion: v1
