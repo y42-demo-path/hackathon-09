@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+  - name: raw_bcra_api
+    config:
+      y42_source:
+        type: python-ingest
+        function_size: S
+      y42:
+        apiVersion: v3
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+      asset_status: verified
+      tier: tier 3
+    tables:
+      - name: raw_bcra_api
+        columns:
+          - name: descripcion
+            description: ""
+            data_type: TEXT
+          - name: idVariable
+            description: ""
+            data_type: NUMBER
+            tests: []
+          - name: valor
+            description: ""
+            data_type: FLOAT
+            tests: []
+          - name: fecha
+            description: ""
+            data_type: TEXT
+          - name: cdSerie
+            description: ""
+            data_type: NUMBER

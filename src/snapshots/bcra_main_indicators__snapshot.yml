@@ -1,0 +1,11 @@
+version: 2
+
+snapshots:
+  - name: bcra_main_indicators__snapshot
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+    config:
+      y42:
+        apiVersion: v1
