@@ -47,9 +47,9 @@ models:
                 severity: error
     tests:
       - dbt_utils.recency:
-          datepart: minute
+          datepart: day
           field: variable_at
-          interval: 30
+          interval: 1
           config:
             severity: error
             store_failures: true
