@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: raw_exchanges_usdt_ars
+  - name: raw_criptoya_usdt_ars
     config:
       y42_source:
         type: python-ingest
@@ -13,17 +13,4 @@ sources:
         users:
           - darb302@gmail.com
     tables:
-      - name: raw_exchanges_usdt_ars
-        columns:
-          - name: bid
-            data_type: FLOAT
-          - name: index
-            data_type: TEXT
-          - name: time
-            data_type: FLOAT
-          - name: totalAsk
-            data_type: FLOAT
-          - name: ask
-            data_type: FLOAT
-          - name: totalBid
-            data_type: FLOAT
+      - name: raw_criptoya_usdt_ars

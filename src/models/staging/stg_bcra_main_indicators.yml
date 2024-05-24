@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_bcra_main_indicators
+  - name: stg_exchange_rates_bcra
     meta:
       experts:
         users:
@@ -54,5 +54,5 @@ models:
             severity: error
             store_failures: true
             schema: tests_failures
-    description: Wholesale and Retail Exchange Rates of the Central Bank of Argentina
-      (BCRA).
+    description: Wholesale and Retail Exchange Rates of the Central Bank of
+      Argentina (BCRA).
