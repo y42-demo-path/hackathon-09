@@ -6,7 +6,7 @@ import json
 from y42.v1.decorators import data_loader
 
 @data_loader
-def raw_exchanges_usdt_ars(context) -> pd.DataFrame:
+def raw_criptoya_usdt_ars(context) -> pd.DataFrame:
     url = "https://criptoya.com/api/usdt/ars/100"
     r = requests.get(url)
     
