@@ -14,13 +14,13 @@ renamed as (
         "totalBid" as total_bid_price,
         "ask" as ask_price,
         "totalAsk" as total_ask_price,
-        "time" as update_at
+        "time" as indicator_at
 
     from source
 
 ),
 
-stg as (
+stage as (
 
     select
 
@@ -34,11 +34,11 @@ stg as (
 
         convert_timezone(
             'America/Argentina/Buenos_Aires',
-            to_timestamp(update_at::bigint)
+            to_timestamp(indicator_at::bigint)
         ) as updated_at
 
     from renamed
 
 )
 
-select * from stg
+select * from stage

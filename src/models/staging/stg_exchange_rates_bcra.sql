@@ -8,10 +8,10 @@ renamed as (
     
     select 
 
-        "idVariable" as variable_id,
-        "descripcion" as variable_description,
-        "valor" as variable_value,
-        "fecha"::date as variable_at
+        "idVariable" as indicator_id,
+        "descripcion" as indicator_description,
+        "valor" as indicator_value,
+        "fecha"::timestamp as indicator_at
 
     from source
 
@@ -19,9 +19,24 @@ renamed as (
 
 filter_exchange_rates as (
 
-    select *
+    select
+
+        case
+            when indicator_id = 4 then 'BCRA-Retailer'
+            when indicator_id = 5 then 'BCRA-Wholesale'
+        end as exchange_name,
+
+        indicator_description,
+        0 as bid_price,
+        0 as total_bid_price,
+        0 as ask_price,
+        indicator_value as total_ask_price,
+        avg(total_ask_price) over() as avg_total_ask_price,
+        indicator_at
+        
     from renamed
-    where variable_id in (4, 5)
+    where indicator_id in (4, 5)
+    
 )
 
-select * from filtered 
+select * from filter_exchange_rates 

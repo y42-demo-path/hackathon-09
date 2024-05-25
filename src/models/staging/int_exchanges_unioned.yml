@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: int_exchanges_rates_unioned
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+    config:
+      y42:
+        apiVersion: v1
