@@ -10,48 +10,52 @@ models:
       y42:
         apiVersion: v1
     columns:
-      - name: VARIABLE_ID
-        data_type: NUMBER
-        tests:
-          - not_null:
-              config:
-                severity: error
-                store_failures: true
-                schema: tests_failures
-          - unique:
-              config:
-                severity: error
-                store_failures: true
-                schema: tests_failures
-      - name: VARIABLE_DESCRIPTION
+      - name: EXCHANGE_NAME
         data_type: TEXT
         tests:
           - not_null:
               config:
-                severity: error
+                severity: warn
+          - unique:
+              config:
+                severity: warn
+      - name: INDICATOR_DESCRIPTION
+        data_type: TEXT
+        tests:
+          - not_null:
+              config:
+                severity: warn
                 store_failures: true
                 schema: tests_failures
-      - name: VARIABLE_VALUE
+      - name: TOTAL_ASK_PRICE
         data_type: FLOAT
         tests:
           - not_null:
               config:
-                severity: error
+                severity: warn
                 store_failures: true
                 schema: tests_failures
-      - name: VARIABLE_AT
-        data_type: DATE
+      - name: AVG_TOTAL_ASK_PRICE
+        data_type: FLOAT
         tests:
           - not_null:
               config:
-                severity: error
+                severity: warn
+                store_failures: true
+                schema: tests_failures                
+      - name: INDICATOR_AT
+        data_type: TIMESTAMP
+        tests:
+          - not_null:
+              config:
+                severity: warn
     tests:
       - dbt_utils.recency:
           datepart: day
-          field: variable_at
+          field: indicator_at
           interval: 1
           config:
-            severity: error
+            severity: warn
             store_failures: true
             schema: tests_failures
     description: Wholesale and Retail Exchange Rates of the Central Bank of

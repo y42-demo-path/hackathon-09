@@ -25,6 +25,7 @@ stage as (
     select
 
         exchange_name,
+        'Cripto Exchange Rate (USDT / ARS)' as indicator_description,
         bid_price,
         total_bid_price,
         ask_price,
@@ -35,7 +36,7 @@ stage as (
         convert_timezone(
             'America/Argentina/Buenos_Aires',
             to_timestamp(indicator_at::bigint)
-        ) as updated_at
+        ) as indicator_at
 
     from renamed
 

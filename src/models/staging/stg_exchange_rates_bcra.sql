@@ -27,9 +27,6 @@ filter_exchange_rates as (
         end as exchange_name,
 
         indicator_description,
-        0 as bid_price,
-        0 as total_bid_price,
-        0 as ask_price,
         indicator_value as total_ask_price,
         avg(total_ask_price) over() as avg_total_ask_price,
         indicator_at

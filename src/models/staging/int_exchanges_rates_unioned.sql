@@ -1,37 +1,22 @@
-with stg_exchange_rates_bcra as ( 
+with exchange_rates_unioned as (
 
-    select * from {{ ref('stg_exchange_rates_bcra') }}
-
+    {{ dbt_utils.union_relations(
+        relations=[
+            ref('stg_exchange_rates_bcra'),
+            ref('stg_exchange_rates_usdt_ars')
+        ],
+            source_column_name='source_model_reference'
+    ) }}
 ),
 
-stg_exchange_rates_usdt_ars as ( 
+final as (
 
-    select * from {{ ref('stg_exchange_rates_usdt_ars') }}
+    select
 
-),
-
-exchange_rates_unioned as (
-
-
-    select *
-    from stg_exchange_rates_bcra
-
-    union all
-
-    select *
-    from stg_exchange_rates_usdt_ars
-
-),
-
-exchange_rates_add_timestamp as (
-
-    select 
-        
-        *,
-        {{dbt.current_timestamp}} as current_timestamp
+        exchange_name
 
     from exchange_rates_unioned
 
 )
 
-select * from exchange_rates_add_timestamp
+select * from final
