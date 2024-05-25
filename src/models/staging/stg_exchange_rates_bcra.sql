@@ -27,6 +27,7 @@ filter_exchange_rates as (
         end as exchange_name,
 
         indicator_description,
+        'BCRA' as source_reference,
         indicator_value as total_ask_price,
         avg(total_ask_price) over() as avg_total_ask_price,
         indicator_at
