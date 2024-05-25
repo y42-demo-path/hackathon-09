@@ -14,7 +14,6 @@ final as (
 
         exchange_name,
         indicator_description,
-        source_model_reference,
         source_reference,
         coalesce(bid_price, 0) as bid_price,
         coalesce(total_bid_price, 0) as total_bid_price,
