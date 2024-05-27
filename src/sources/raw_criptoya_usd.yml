@@ -13,4 +13,4 @@ sources:
         users:
           - darb302@gmail.com
     tables:
-      - name: raw_criptoya_usdt
+      - name: raw_criptoya_usd
