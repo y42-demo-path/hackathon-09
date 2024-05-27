@@ -5,3 +5,14 @@ seeds:
     config:
       y42:
         apiVersion: v1
+    columns:
+      - name: EXCHANGE_NAME_ORIGINAL
+        data_type: TEXT
+        tests:
+          - unique
+          - not_null
+      - name: EXCHANGE_NAME_NEW
+        data_type: TEXT
+        tests:
+          - not_null
+          - unique
