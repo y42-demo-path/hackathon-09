@@ -1,0 +1,16 @@
+version: 2
+
+sources:
+  - name: raw_criptoya_usd
+    config:
+      y42_source:
+        type: python-ingest
+        function_size: S
+      y42:
+        apiVersion: v3
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+    tables:
+      - name: raw_criptoya_usdt
