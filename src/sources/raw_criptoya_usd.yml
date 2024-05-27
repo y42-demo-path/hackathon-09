@@ -1,0 +1,36 @@
+version: 2
+
+sources:
+  - name: raw_criptoya_usd
+    config:
+      y42_source:
+        type: python-ingest
+        function_size: S
+      y42:
+        apiVersion: v3
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+    tables:
+      - name: raw_criptoya_usd
+        columns:
+          - name: index
+            data_type: TEXT
+            tests:
+              - not_null
+              - unique
+          - name: ask
+            data_type: FLOAT
+            tests:
+              - not_null
+          - name: bid
+            data_type: FLOAT
+            tests:
+              - not_null
+          - name: timestamp
+            data_type: FLOAT
+            tests:
+              - not_null
+          - name: price
+            data_type: FLOAT
