@@ -3,7 +3,7 @@
     materialized = 'incremental',
     full_refresh = False,
     unique_key = ['exchange_rates_token'],
-    on_schema_change = 'sync_all_columns'
+    on_schema_change = 'append_new_columns'
   )
 }}
 
@@ -78,7 +78,9 @@ final as (
         current_timestamp as processed_at  
 
     from fields_coalesced
-    where updated_at > {{ incremental_cutoff }}
+    {% if is_incremental() %}
+    where updated_at > (select max(updated_at) from {{ this }})
+    {% endif %}
 
 )
 
