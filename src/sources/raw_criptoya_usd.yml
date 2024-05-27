@@ -12,8 +12,8 @@ sources:
         users:
           - darb302@gmail.com
     tables:
-      - name: raw_criptoya_usd_ars
-      - name: raw_criptoya_usdt_ars
+      - name: raw_exchange_rates_usd_ars
+      - name: raw_exchange_rates_usdt_ars
     description: >-
       The following data will be pulled from the Criptoya API:
 
