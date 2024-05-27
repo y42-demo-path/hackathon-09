@@ -1,6 +1,6 @@
 version: 2
 sources:
-  - name: raw_criptoya_usd_ars
+  - name: raw_criptoya_api
     config:
       y42_source:
         type: python-ingest
@@ -13,5 +13,12 @@ sources:
           - darb302@gmail.com
     tables:
       - name: raw_criptoya_usd_ars
-    description: Exchange rates (Usd / Ars) for the parallel market (Blue), card and
-      savings (Bank Dollars). Data pulled from Criptoya.
+      - name: raw_criptoya_usdt_ars
+    description: >-
+      The following data will be pulled from the Criptoya API:
+
+
+      * Cryptocurrency Exchange Rates (Usdt/Ars) for the main exchanges in Argentina.
+
+
+      * Exchange rates (Usd / Ars) for the parallel market (Blue), card and savings (Bank Dollars). 

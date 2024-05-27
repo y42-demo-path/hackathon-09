@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: raw_yahoofinance_usd_ars
+  - name: raw_yahoofinance_api
     config:
       y42_source:
         type: python-ingest
@@ -13,4 +13,4 @@ sources:
         users:
           - darb302@gmail.com
     tables:
-      - name: raw_yahoofinance_usd_ars
+      - name: raw_ccl_usd_ars
