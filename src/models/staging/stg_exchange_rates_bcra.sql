@@ -11,7 +11,7 @@ renamed as (
         "idVariable" as indicator_id,
         "descripcion" as indicator_description,
         "valor" as indicator_value,
-        "fecha"::timestamp as indicator_at
+        "fecha"::timestamp as updated_at
 
     from source
 
@@ -30,7 +30,7 @@ filter_exchange_rates as (
         'BCRA' as source_reference,
         indicator_value as total_ask_price,
         avg(total_ask_price) over() as avg_total_ask_price,
-        indicator_at
+        updated_at
         
     from renamed
     where indicator_id in (4, 5)

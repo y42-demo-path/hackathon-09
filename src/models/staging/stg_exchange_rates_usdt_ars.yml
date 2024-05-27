@@ -11,34 +11,46 @@ models:
         apiVersion: v1
     columns:
       - name: EXCHANGE_NAME
+        description: ""
         data_type: TEXT
         tests:
           - not_null
           - unique
       - name: BID_PRICE
+        description: ""
         data_type: FLOAT
         tests:
           - not_null
       - name: TOTAL_BID_PRICE
+        description: ""
         data_type: FLOAT
         tests:
           - not_null
       - name: ASK_PRICE
+        description: ""
         data_type: FLOAT
         tests:
           - not_null
       - name: TOTAL_ASK_PRICE
+        description: ""
         data_type: FLOAT
         tests:
           - not_null
-      - name: INDICATOR_AT
+      - name: UPDATED_AT
+        description: ""
         data_type: TIMESTAMP_TZ
         tests:
           - not_null
+      - name: INDICATOR_DESCRIPTION
+        data_type: TEXT
+      - name: SOURCE_REFERENCE
+        data_type: TEXT
+      - name: AVG_TOTAL_ASK_PRICE
+        data_type: FLOAT
     tests:
       - dbt_utils.recency:
           datepart: minute
-          field: indicator_at
+          field: updated_at
           interval: 30
           config:
             severity: error
