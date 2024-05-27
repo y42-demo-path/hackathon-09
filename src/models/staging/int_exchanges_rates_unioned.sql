@@ -12,6 +12,11 @@
     ]
 %}
 
+{%- set types_bcra_exchange_rates = dbt_utils.get_column_values(
+    table=ref('stg_exchange_rates_bcra'),
+    column='exchange_name'
+) -%}
+
 
 with exchange_rates_unioned as (
 
@@ -46,12 +51,24 @@ final as (
     select 
 
         {{ dbt_utils.generate_surrogate_key(columns_to_tokenize) }} as exchange_rates_token,
-        
+
         *,
 
-        current_timestamp as ingested_at  
+        {%- for types_bcra_exchange_rate in types_bcra_exchange_rates %}
+        
+            last_value(
+                case when exchange_name = '{{ types_bcra_exchange_rate }}' then total_ask_price end
+            ignore nulls) over(order by indicator_at)
+                as {{ dbt_utils.slugify(types_bcra_exchange_rate) }}_official_rate,
 
-    from exchange_rates_coalesced
+            (total_ask_price / nullif({{ dbt_utils.slugify(types_bcra_exchange_rate) }}_official_rate, 0)) -1 
+                as gap_over_{{ dbt_utils.slugify(types_bcra_exchange_rate) }}_official_rate,
+            
+        {% endfor %}
+
+        current_timestamp as processed_at  
+
+    from fields_coalesced
 
 )
 
