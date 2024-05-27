@@ -31,14 +31,14 @@ models:
         data_type: FLOAT
         tests:
           - not_null
-      - name: UPDATED_AT
+      - name: INDICATOR_AT
         data_type: TIMESTAMP_TZ
         tests:
           - not_null
     tests:
       - dbt_utils.recency:
           datepart: minute
-          field: updated_at
+          field: indicator_at
           interval: 30
           config:
             severity: error
