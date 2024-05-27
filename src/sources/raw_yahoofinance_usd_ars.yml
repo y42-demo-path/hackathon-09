@@ -14,3 +14,12 @@ sources:
           - darb302@gmail.com
     tables:
       - name: raw_ccl_usd_ars
+        columns:
+          - name: YPF_CCL
+            data_type: FLOAT
+          - name: GGAL_CCL
+            data_type: FLOAT
+          - name: CCL_AVERAGE
+            data_type: FLOAT
+          - name: PAMP_CCL
+            data_type: FLOAT
