@@ -25,7 +25,7 @@ stage as (
     select
 
         exchange_name,
-        'Cripto Exchange Rate (USDT / ARS)' as indicator_description,
+        'Cripto Exchange Rate (USDT / ARS)'  as indicator_description,
         'Criptoya' as source_reference,
         bid_price,
         total_bid_price,
