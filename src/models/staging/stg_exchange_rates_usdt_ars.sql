@@ -1,7 +1,7 @@
 with source as (
 
     select *
-    from {{ source('raw_criptoya_usdt_ars', 'raw_criptoya_usdt_ars') }}
+    from {{ source('raw_criptoya_api', 'raw_criptoya_usdt_ars') }}
 
 ),
 
