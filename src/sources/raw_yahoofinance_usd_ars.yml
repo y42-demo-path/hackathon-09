@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw_yahoofinance_usd_ars
+    config:
+      y42_source:
+        type: python-ingest
+      y42:
+        apiVersion: v3
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+    tables:
+      - name: raw_yahoofinance_usd_ars
