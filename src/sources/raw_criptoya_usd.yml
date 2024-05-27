@@ -1,7 +1,7 @@
 version: 2
 
 sources:
-  - name: raw_criptoya_usd
+  - name: raw_criptoya_usd_ars
     config:
       y42_source:
         type: python-ingest
@@ -13,7 +13,7 @@ sources:
         users:
           - darb302@gmail.com
     tables:
-      - name: raw_criptoya_usd
+      - name: raw_criptoya_usd_ars
         columns:
           - name: index
             data_type: TEXT
@@ -34,3 +34,5 @@ sources:
               - not_null
           - name: price
             data_type: FLOAT
+    description: Exchange rates (Usd / Ars) for the parallel market (Blue), card and
+      savings (Bank Dollars). Data pulled from Criptoya API.

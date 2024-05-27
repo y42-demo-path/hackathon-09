@@ -34,3 +34,5 @@ sources:
           - name: cdSerie
             description: ""
             data_type: NUMBER
+    description: "Wholesale and Retail Exchange Rates of the Central Bank of
+      Argentina (Official Rates). Data pulled from BCRA API."
