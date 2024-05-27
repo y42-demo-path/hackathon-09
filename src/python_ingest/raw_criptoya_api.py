@@ -14,7 +14,7 @@ def raw_exchange_rates_usd_ars(context) -> pd.DataFrame:
         data = r.json()
         df = pd.DataFrame(data)
         df = df[['ahorro', 'tarjeta', 'blue']]
-        df = df[df.index.isin(['price', 'timestamp', 'ask', 'bid'])].fillna(0)
+        df = df[df.index.isin(['price', 'timestamp', 'ask', 'bid'])]
         df = df.T.reset_index()
     else: 
         logging.error(f"An error occurred. Error status_code: {r.status_code}")
