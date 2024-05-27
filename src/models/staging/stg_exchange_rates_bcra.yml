@@ -11,6 +11,7 @@ models:
         apiVersion: v1
     columns:
       - name: EXCHANGE_NAME
+        description: ""
         data_type: TEXT
         tests:
           - not_null:
@@ -20,6 +21,7 @@ models:
               config:
                 severity: warn
       - name: INDICATOR_DESCRIPTION
+        description: ""
         data_type: TEXT
         tests:
           - not_null:
@@ -28,6 +30,7 @@ models:
                 store_failures: true
                 schema: tests_failures
       - name: TOTAL_ASK_PRICE
+        description: ""
         data_type: FLOAT
         tests:
           - not_null:
@@ -36,23 +39,27 @@ models:
                 store_failures: true
                 schema: tests_failures
       - name: AVG_TOTAL_ASK_PRICE
+        description: ""
         data_type: FLOAT
         tests:
           - not_null:
               config:
                 severity: warn
                 store_failures: true
-                schema: tests_failures                
-      - name: INDICATOR_AT
-        data_type: TIMESTAMP
+                schema: tests_failures
+      - name: UPDATED_AT
+        description: ""
+        data_type: TIMESTAMP_NTZ
         tests:
           - not_null:
               config:
                 severity: warn
+      - name: SOURCE_REFERENCE
+        data_type: TEXT
     tests:
       - dbt_utils.recency:
           datepart: day
-          field: indicator_at
+          field: updated_at
           interval: 1
           config:
             severity: warn

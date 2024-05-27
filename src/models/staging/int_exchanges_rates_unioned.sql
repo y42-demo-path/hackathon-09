@@ -1,3 +1,12 @@
+{{
+  config(
+    materialized = 'incremental',
+    full_refresh = False,
+    unique_key = ['exchange_rates_token'],
+    on_schema_change = 'append_new_columns'
+  )
+}}
+
 {% set columns_to_tokenize =
     [
         'exchange_name', 
@@ -8,7 +17,7 @@
         'ask_price',
         'total_ask_price',
         'avg_total_ask_price',
-        'indicator_at'
+        'updated_at'
     ]
 %}
 
@@ -40,7 +49,7 @@ fields_coalesced as (
         coalesce(ask_price, 0) as ask_price,
         total_ask_price,
         avg_total_ask_price,
-        indicator_at      
+        updated_at      
 
     from exchange_rates_unioned
 
@@ -58,7 +67,7 @@ final as (
         
             last_value(
                 case when exchange_name = '{{ types_bcra_exchange_rate }}' then total_ask_price end
-            ignore nulls) over(order by indicator_at)
+            ignore nulls) over(order by updated_at)
                 as {{ dbt_utils.slugify(types_bcra_exchange_rate) }}_official_rate,
 
             (total_ask_price / nullif({{ dbt_utils.slugify(types_bcra_exchange_rate) }}_official_rate, 0)) -1 
@@ -69,6 +78,9 @@ final as (
         current_timestamp as processed_at  
 
     from fields_coalesced
+    {% if is_incremental() %}
+    where updated_at > (select max(updated_at) from {{ this }})
+    {% endif %}
 
 )
 
