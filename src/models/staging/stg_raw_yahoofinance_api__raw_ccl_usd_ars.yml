@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_exchange_rates_ccl_usd_ars
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+    config:
+      y42:
+        apiVersion: v1
+    columns:
+      - name: YPF_CCL
+        description: ""
+        data_type: FLOAT
+      - name: GGAL_CCL
+        description: ""
+        data_type: FLOAT
+      - name: CCL_AVERAGE
+        description: ""
+        data_type: FLOAT
+      - name: PAMP_CCL
+        description: ""
+        data_type: FLOAT
+      - name: DATETIME
+        data_type: NUMBER

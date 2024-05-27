@@ -13,7 +13,6 @@ def raw_ccl_usd_ars(context) -> pd.DataFrame:
 
     for ticker in tickers:
         data[ticker] = yf.download(ticker, period='1d', interval='5m')['Adj Close']
-        # Select the last available value
         data = data.iloc[[-1]]
 
     # Calculation of the CCL dollar as the average of the CCL of GGAL, PAM, and YPF
@@ -21,10 +20,8 @@ def raw_ccl_usd_ars(context) -> pd.DataFrame:
     df['YPF_CCL'] = data['YPFD.BA'] * 1 / data['YPF']
     df['PAMP_CCL'] = data['PAMP.BA'] * 25 / data['PAM']
     df['CCL_AVERAGE'] = (df['GGAL_CCL'] + df['YPF_CCL'] + df['PAMP_CCL']) / 3
-    df = df.reset_index().fillna(0)
+    df = df.reset_index()
     df.columns = df.columns.str.upper()
-
-    #df['DATETIME'] = pd.to_numeric(df['DATETIME'], errors='coerce')
     df['DATETIME'] = df['DATETIME'].astype(int)   
     
     return df
