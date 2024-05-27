@@ -23,5 +23,8 @@ def raw_ccl_usd_ars(context) -> pd.DataFrame:
     df['CCL_AVERAGE'] = (df['GGAL_CCL'] + df['YPF_CCL'] + df['PAMP_CCL']) / 3
     df = df.reset_index().fillna(0)
     df.columns = df.columns.str.upper()
+
+    #df['DATETIME'] = pd.to_numeric(df['DATETIME'], errors='coerce')
+    df['DATETIME'] = df['DATETIME'].astype(int)   
     
     return df
