@@ -13,3 +13,5 @@ sources:
           - darb302@gmail.com
     tables:
       - name: raw_criptoya_usd_ars
+    description: Exchange rates (Usd / Ars) for the parallel market (Blue), card and
+      savings (Bank Dollars). Data pulled from Criptoya.
