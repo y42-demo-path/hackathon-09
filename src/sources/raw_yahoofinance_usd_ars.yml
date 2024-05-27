@@ -1,6 +1,7 @@
 version: 2
+
 sources:
-  - name: raw_criptoya_usd_ars
+  - name: raw_yahoofinance_usd_ars
     config:
       y42_source:
         type: python-ingest
@@ -12,6 +13,4 @@ sources:
         users:
           - darb302@gmail.com
     tables:
-      - name: raw_criptoya_usd_ars
-    description: Exchange rates (Usd / Ars) for the parallel market (Blue), card and
-      savings (Bank Dollars). Data pulled from Criptoya.
+      - name: raw_yahoofinance_usd_ars

@@ -27,3 +27,5 @@ sources:
             data_type: TEXT
           - name: bid
             data_type: FLOAT
+    description: Cryptocurrency Exchange Rates (Usdt/Ars) for the main exchanges in
+      Argentina. Data pulled from the Criptoya API.
