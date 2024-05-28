@@ -9,7 +9,7 @@ renamed as (
 
     select
 
-        "index" as exchange_name,
+        "index" as exchange_rate_name,
         "bid" as bid_price,
         "totalBid" as total_bid_price,
         "ask" as ask_price,
@@ -24,7 +24,7 @@ stage as (
 
     select
 
-        {{ map_values_from_seed('exchange_name','exchange_names_mapping') }} as exchange_name,
+        {{ map_values_from_seed('exchange_rate_name','exchange_names_mapping') }} as exchange_rate_name,
         'Cripto Exchange Rate (USDT / ARS)'  as indicator_description,
         'Criptoya' as source_reference,
         bid_price,

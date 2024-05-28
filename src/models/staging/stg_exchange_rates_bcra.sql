@@ -24,7 +24,7 @@ filter_exchange_rates as (
         case
             when indicator_id = 4 then 'BCRA-Retailer'
             when indicator_id = 5 then 'BCRA-Wholesale'
-        end as exchange_name,
+        end as exchange_rate_name,
 
         indicator_description,
         'BCRA' as source_reference,

@@ -19,9 +19,8 @@ def raw_ccl_usd_ars(context) -> pd.DataFrame:
     df['GGAL_CCL'] = data['GGAL.BA'] * 10 / data['GGAL']
     df['YPF_CCL'] = data['YPFD.BA'] * 1 / data['YPF']
     df['PAMP_CCL'] = data['PAMP.BA'] * 25 / data['PAM']
-    df['CCL_AVERAGE'] = (df['GGAL_CCL'] + df['YPF_CCL'] + df['PAMP_CCL']) / 3
     df = df.reset_index()
     df.columns = df.columns.str.upper()
-    df['DATETIME'] = df['DATETIME'].astype(int)   
+    df['DATETIME'] = df['DATETIME'].astype(int)
     
     return df
