@@ -1,7 +1,6 @@
 {{
   config(
     materialized = 'incremental',
-    full_refresh = False,
     unique_key = ['exchange_rate_token']
   )
 }}
