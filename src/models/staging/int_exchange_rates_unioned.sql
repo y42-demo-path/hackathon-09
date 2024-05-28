@@ -33,9 +33,11 @@ with exchange_rates_unioned as (
             ref('stg_exchange_rates_bcra'),
             ref('stg_exchange_rates_usd_ars'),
             ref('stg_exchange_rates_usdt_ars'),
+			ref('stg_exchange_rates_mep_usd_ars'),
 			ref('stg_exchange_rates_ccl_usd_ars')
         ]
     ) }}
+
 ),
 
 fields_coalesced as (
