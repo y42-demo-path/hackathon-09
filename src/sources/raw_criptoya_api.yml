@@ -39,6 +39,15 @@ sources:
           - name: ask
             data_type: FLOAT
       - name: raw_exchange_rates_mep_usd_ars
+        columns:
+          - name: variation
+            data_type: FLOAT
+          - name: timestamp
+            data_type: FLOAT
+          - name: price
+            data_type: FLOAT
+          - name: index
+            data_type: TEXT
     description: >-
       The following data will be pulled from the Criptoya API:
 
