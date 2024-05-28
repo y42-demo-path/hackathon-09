@@ -21,7 +21,7 @@
 %}
 
 {%- set types_bcra_exchange_rates = dbt_utils.get_column_values(
-    table=ref('stg_exchange_rates_bcra'),
+    table=ref('stg_exchange_rates_official_usd_ars'),
     column='exchange_rate_name'
 ) -%}
 
