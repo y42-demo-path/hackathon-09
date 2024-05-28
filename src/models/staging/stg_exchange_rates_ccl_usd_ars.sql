@@ -22,7 +22,7 @@ renamed as (
 			
 		'Yahoo Finance' as source_reference,
 		total_bid_price::float as total_bid_price,
-		avg(total_ask_price) over() as avg_total_ask_price,
+		avg(total_bid_price) over() as avg_total_bid_price,
         
         convert_timezone(
             'America/Argentina/Buenos_Aires',
