@@ -40,7 +40,7 @@ stage as (
 
         case
             {% for exchange_rate_name, exchange_rate_description in dollars_descriptions.items() %}
-                when exchange_rate_name = '{{ exchange_name }}' then '{{ exchange_rate_description[1] }}'
+                when exchange_rate_name = '{{ exchange_rate_name }}' then '{{ exchange_rate_description[1] }}'
             {% endfor %}
             else exchange_rate_name
         end as indicator_description,    
