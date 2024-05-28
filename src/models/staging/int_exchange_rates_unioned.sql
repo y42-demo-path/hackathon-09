@@ -75,6 +75,11 @@ final as (
             
         {% endfor %}
 
+            last_value(
+                case when exchange_rate_name like 'MEP%' then avg_total_ask_price end
+            ignore nulls) over(order by updated_at)
+                as mep_average_rate,
+
         current_timestamp as processed_at  
 
     from fields_coalesced
