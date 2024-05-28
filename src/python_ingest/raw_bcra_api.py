@@ -6,7 +6,7 @@ import json
 from y42.v1.decorators import data_loader
 
 @data_loader
-def raw_bcra_api(context) -> pd.DataFrame:
+def raw_exchange_rates_official_usd_ars(context) -> pd.DataFrame:
     url = "https://api.bcra.gob.ar/estadisticas/v2.0/principalesvariables"
     headers = {"Accept-Language": "en-US"}
     
