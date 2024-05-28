@@ -53,7 +53,7 @@ models:
           field: updated_at
           interval: 30
           config:
-            severity: error
+            severity: warn
             store_failures: true
             schema: tests_failures
     description: Cryptocurrency Exchange Rates (Usdt/Ars) for the main exchanges in
