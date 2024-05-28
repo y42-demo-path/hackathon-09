@@ -1,0 +1,11 @@
+version: 2
+
+models:
+  - name: mrt_gaps_by_exchange_rate
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+    config:
+      y42:
+        apiVersion: v1
