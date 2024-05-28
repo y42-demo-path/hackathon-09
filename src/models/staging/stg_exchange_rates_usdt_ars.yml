@@ -10,7 +10,7 @@ models:
       y42:
         apiVersion: v1
     columns:
-      - name: EXCHANGE_NAME
+      - name: EXCHANGE_RATE_NAME
         description: ""
         data_type: TEXT
         tests:

@@ -12,7 +12,7 @@ models:
     columns:
       - name: EXCHANGE_RATES_TOKEN
         data_type: TEXT
-      - name: EXCHANGE_NAME
+      - name: EXCHANGE_RATE_NAME
         data_type: TEXT
       - name: INDICATOR_DESCRIPTION
         data_type: TEXT

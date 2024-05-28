@@ -3,7 +3,7 @@ with source as (
 	{{ dbt_utils.unpivot(
 		relation=source('raw_yahoofinance_api', 'raw_ccl_usd_ars'),
 		exclude=["DATETIME"],
-		field_name="exchange_name",
+		field_name="exchange_rate_name",
 		value_name="total_ask_price"
 	) }}
 
