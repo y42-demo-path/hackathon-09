@@ -2,6 +2,7 @@ with source as (
 
 	{{ dbt_utils.unpivot(
 		relation=source('raw_yahoofinance_api', 'raw_ccl_usd_ars'),
+		cast_to='varchar',
 		exclude=["DATETIME"],
 		field_name="exchange_rate_name",
 		value_name="total_ask_price"
@@ -13,9 +14,9 @@ renamed as (
 
 	select 
 
-		exchange_rate_name,
+		concat('CCL ', exchange_rate_name) as exchange_rate_name,
 
-        'Exchange rate arises from the buying and selling of bonds 
+        'The CCL dollar arises from the buying and selling of bonds 
 			and stocks that are listed both in the local market 
 			and abroad.' as indicator_description,
 			

@@ -15,17 +15,12 @@ sources:
     tables:
       - name: raw_ccl_usd_ars
         columns:
-          - name: YPF_CCL
-            description: ""
-            data_type: FLOAT
-          - name: GGAL_CCL
-            description: ""
-            data_type: FLOAT
-          - name: CCL_AVERAGE
-            description: ""
-            data_type: FLOAT
-          - name: PAMP_CCL
-            description: ""
-            data_type: FLOAT
           - name: DATETIME
+            description: ""
             data_type: NUMBER
+          - name: GGAL
+            data_type: FLOAT
+          - name: YPF
+            data_type: FLOAT
+          - name: PAMP
+            data_type: FLOAT

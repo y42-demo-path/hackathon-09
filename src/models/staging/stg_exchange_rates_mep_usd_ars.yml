@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_exchange_rates_ccl_usd_ars
+  - name: stg_exchange_rates_mep_usd_ars
     meta:
       experts:
         users:

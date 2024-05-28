@@ -1,8 +1,8 @@
 {{
   config(
     materialized = 'incremental',
-    unique_key = ['exchange_rate_token'],
-	on_schema_change = 'sync_all_columns'
+    full_refresh = False,
+    unique_key = ['exchange_rate_token']
   )
 }}
 
@@ -33,9 +33,11 @@ with exchange_rates_unioned as (
             ref('stg_exchange_rates_bcra'),
             ref('stg_exchange_rates_usd_ars'),
             ref('stg_exchange_rates_usdt_ars'),
+			ref('stg_exchange_rates_mep_usd_ars'),
 			ref('stg_exchange_rates_ccl_usd_ars')
         ]
     ) }}
+
 ),
 
 fields_coalesced as (
@@ -56,7 +58,7 @@ fields_coalesced as (
 
 ),
 
-final as (
+transformations as (
 
     select 
 
@@ -69,12 +71,14 @@ final as (
             last_value(
                 case when exchange_rate_name = '{{ types_bcra_exchange_rate }}' then total_ask_price end
             ignore nulls) over(order by updated_at)
-                as {{ dbt_utils.slugify(types_bcra_exchange_rate) }}_official_rate,
-
-            (total_ask_price / nullif({{ dbt_utils.slugify(types_bcra_exchange_rate) }}_official_rate, 0)) -1 
-                as gap_over_{{ dbt_utils.slugify(types_bcra_exchange_rate) }}_official_rate,
+                as {{ dbt_utils.slugify(types_bcra_exchange_rate) }},
             
         {% endfor %}
+
+            last_value(
+                case when exchange_rate_name like 'MEP%' then avg_total_ask_price end
+            ignore nulls) over(order by updated_at)
+                as avg_mep_rate,
 
         current_timestamp as processed_at  
 
@@ -83,6 +87,29 @@ final as (
     {% if is_incremental() %}
     where updated_at > (select max(updated_at) from {{ this }})
     {% endif %}
+
+),
+
+final as (
+
+	select 
+
+		exchange_rate_token,
+		exchange_rate_name,
+		indicator_description,
+		source_reference,
+		bid_price,
+		totaL_bid_price,
+		ask_price,
+		total_ask_price,
+		avg_total_ask_price,
+		official_retailer_dollar,
+		official_wholesale_dollar,
+		avg_mep_rate,
+		updated_at,
+		processed_at
+
+	from transformations
 
 )
 
