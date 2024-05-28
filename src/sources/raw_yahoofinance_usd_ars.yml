@@ -21,11 +21,9 @@ sources:
           - name: GGAL_CCL
             description: ""
             data_type: FLOAT
-          - name: CCL_AVERAGE
-            description: ""
-            data_type: FLOAT
           - name: PAMP_CCL
             description: ""
             data_type: FLOAT
           - name: DATETIME
+            description: ""
             data_type: NUMBER

@@ -72,9 +72,6 @@ final as (
                 case when exchange_rate_name = '{{ types_bcra_exchange_rate }}' then total_ask_price end
             ignore nulls) over(order by updated_at)
                 as {{ dbt_utils.slugify(types_bcra_exchange_rate) }}_official_rate,
-
-            (total_ask_price / nullif({{ dbt_utils.slugify(types_bcra_exchange_rate) }}_official_rate, 0)) -1 
-                as gap_over_{{ dbt_utils.slugify(types_bcra_exchange_rate) }}_official_rate,
             
         {% endfor %}
 
