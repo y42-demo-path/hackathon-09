@@ -1,19 +1,19 @@
-WITH source AS (
+with source as (
 	
-	SELECT * 
-	FROM {{ source('raw_criptoya_api', 'raw_exchange_rates_mep_usd_ars') }}
+	select * 
+	from {{ source('raw_criptoya_api', 'raw_exchange_rates_mep_usd_ars') }}
 
 ),
 
 renamed AS (
 
-	SELECT
+	select
 	
 		"index" as exchange_rate_name,
 		"price" as total_ask_price,
 		"timestamp" as updated_at
 
-	FROM source
+	from source
 
 ),
 
