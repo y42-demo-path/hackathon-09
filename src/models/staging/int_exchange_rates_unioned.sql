@@ -30,9 +30,9 @@ with exchange_rates_unioned as (
 
     {{ dbt_utils.union_relations(
         relations=[
-            ref('stg_exchange_rates_bcra'),
-            ref('stg_exchange_rates_usd_ars'),
-            ref('stg_exchange_rates_usdt_ars'),
+            ref('stg_exchange_rates_official_usd_ars'),
+            ref('stg_exchange_rates_other_usd_ars'),
+            ref('stg_exchange_rates_cripto_usdt_ars'),
 			ref('stg_exchange_rates_mep_usd_ars'),
 			ref('stg_exchange_rates_ccl_usd_ars')
         ]

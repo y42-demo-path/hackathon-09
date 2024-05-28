@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_exchange_rates_usdt_ars
+  - name: stg_exchange_rates_cripto_usdt_ars
     meta:
       experts:
         users:
