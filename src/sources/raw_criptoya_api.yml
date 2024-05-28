@@ -38,6 +38,7 @@ sources:
             data_type: TEXT
           - name: ask
             data_type: FLOAT
+      - name: raw_exchange_rates_mep_usd_ars
     description: >-
       The following data will be pulled from the Criptoya API:
 
