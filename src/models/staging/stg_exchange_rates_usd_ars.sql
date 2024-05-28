@@ -17,7 +17,7 @@ renamed as (
 
 	select
 		
-		"index" as exchange_name,
+		"index" as exchange_rate_name,
 		"price" as price,
 		"bid" as total_bid_price,
 		"ask" as total_ask_price,
@@ -33,16 +33,16 @@ stage as (
 
         case
             {% for spanish_name, english_name in dollars_descriptions.items() %}
-                when exchange_name = '{{ spanish_name }}' then '{{ english_name[0] }}'
+                when exchange_rate_name = '{{ spanish_name }}' then '{{ english_name[0] }}'
             {% endfor %}
-            else exchange_name
-        end as exchange_name,
+            else exchange_rate_name
+        end as exchange_rate_name,
 
         case
-            {% for exchange_name, exchange_description in dollars_descriptions.items() %}
-                when exchange_name = '{{ exchange_name }}' then '{{ exchange_description[1] }}'
+            {% for exchange_rate_name, exchange_rate_description in dollars_descriptions.items() %}
+                when exchange_rate_name = '{{ exchange_name }}' then '{{ exchange_rate_description[1] }}'
             {% endfor %}
-            else exchange_name
+            else exchange_rate_name
         end as indicator_description,    
 
         'Criptoya' as source_reference,

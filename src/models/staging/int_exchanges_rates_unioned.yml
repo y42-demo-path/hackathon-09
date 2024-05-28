@@ -9,3 +9,34 @@ models:
     config:
       y42:
         apiVersion: v1
+    columns:
+      - name: EXCHANGE_RATES_TOKEN
+        data_type: TEXT
+      - name: EXCHANGE_RATE_NAME
+        data_type: TEXT
+      - name: INDICATOR_DESCRIPTION
+        data_type: TEXT
+      - name: SOURCE_REFERENCE
+        data_type: TEXT
+      - name: BID_PRICE
+        data_type: FLOAT
+      - name: TOTAL_BID_PRICE
+        data_type: FLOAT
+      - name: ASK_PRICE
+        data_type: FLOAT
+      - name: TOTAL_ASK_PRICE
+        data_type: FLOAT
+      - name: AVG_TOTAL_ASK_PRICE
+        data_type: FLOAT
+      - name: UPDATED_AT
+        data_type: TIMESTAMP_NTZ
+      - name: BCRA_RETAILER_OFFICIAL_RATE
+        data_type: FLOAT
+      - name: GAP_OVER_BCRA_RETAILER_OFFICIAL_RATE
+        data_type: FLOAT
+      - name: BCRA_WHOLESALE_OFFICIAL_RATE
+        data_type: FLOAT
+      - name: GAP_OVER_BCRA_WHOLESALE_OFFICIAL_RATE
+        data_type: FLOAT
+      - name: PROCESSED_AT
+        data_type: TIMESTAMP_LTZ

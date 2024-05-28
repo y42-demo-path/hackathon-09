@@ -1,0 +1,48 @@
+version: 2
+sources:
+  - name: raw_criptoya_api
+    config:
+      y42_source:
+        type: python-ingest
+        function_size: S
+      y42:
+        apiVersion: v3
+    meta:
+      experts:
+        users:
+          - darb302@gmail.com
+    tables:
+      - name: raw_exchange_rates_usd_ars
+        columns:
+          - name: timestamp
+            data_type: FLOAT
+          - name: price
+            data_type: FLOAT
+          - name: bid
+            data_type: FLOAT
+          - name: index
+            data_type: TEXT
+          - name: ask
+            data_type: FLOAT
+      - name: raw_exchange_rates_usdt_ars
+        columns:
+          - name: time
+            data_type: FLOAT
+          - name: totalBid
+            data_type: FLOAT
+          - name: totalAsk
+            data_type: FLOAT
+          - name: bid
+            data_type: FLOAT
+          - name: index
+            data_type: TEXT
+          - name: ask
+            data_type: FLOAT
+    description: >-
+      The following data will be pulled from the Criptoya API:
+
+
+      * Cryptocurrency Exchange Rates (Usdt/Ars) for the main exchanges in Argentina.
+
+
+      * Exchange rates (Usd / Ars) for the parallel market (Blue), card and savings (Bank Dollars). 
