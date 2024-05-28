@@ -1,8 +1,8 @@
 {{
   config(
     materialized = 'incremental',
-    full_refresh = False,
-    unique_key = ['exchange_rate_token']
+    unique_key = ['exchange_rate_token'],
+	on_schema_change = 'sync_all_columns'
   )
 }}
 
