@@ -6,7 +6,7 @@ import json
 from y42.v1.decorators import data_loader
 
 @data_loader
-def raw_ccl_usd_ars(context) -> pd.DataFrame:
+def raw_exchange_rates_ccl_usd_ars(context) -> pd.DataFrame:
     tickers = ['GGAL.BA', 'GGAL', 'YPFD.BA', 'YPF', 'PAMP.BA', 'PAM']
     data = pd.DataFrame(columns=tickers)
     df = pd.DataFrame()
