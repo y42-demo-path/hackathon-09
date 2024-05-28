@@ -13,7 +13,7 @@ sources:
         users:
           - darb302@gmail.com
     tables:
-      - name: raw_ccl_usd_ars
+      - name: raw_exchange_rates_ccl_usd_ars
         columns:
           - name: DATETIME
             description: ""

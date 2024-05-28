@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: stg_exchange_rates_bcra
+  - name: stg_exchange_rates_official_usd_ars
     meta:
       experts:
         users:
