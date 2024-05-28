@@ -10,17 +10,15 @@ models:
       y42:
         apiVersion: v1
     columns:
-      - name: YPF_CCL
-        description: ""
+      - name: EXCHANGE_RATE_NAME
+        data_type: TEXT
+      - name: INDICATOR_DESCRIPTION
+        data_type: TEXT
+      - name: SOURCE_REFERENCE
+        data_type: TEXT
+      - name: TOTAL_ASK_PRICE
         data_type: FLOAT
-      - name: GGAL_CCL
-        description: ""
+      - name: AVG_TOTAL_ASK_PRICE
         data_type: FLOAT
-      - name: CCL_AVERAGE
-        description: ""
-        data_type: FLOAT
-      - name: PAMP_CCL
-        description: ""
-        data_type: FLOAT
-      - name: DATETIME
-        data_type: NUMBER
+      - name: UPDATED_AT
+        data_type: TIMESTAMP_TZ
