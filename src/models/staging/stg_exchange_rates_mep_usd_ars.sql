@@ -10,7 +10,7 @@ renamed AS (
 	select
 	
 		"index" as exchange_rate_name,
-		"price" as total_ask_price,
+		"price" as total_bid_price,
 		"timestamp" as updated_at
 
 	from source
@@ -28,9 +28,9 @@ stage as (
 			foreign markets.' as indicator_description,  
 
         'Criptoya' as source_reference,
-        coalesce(total_ask_price, 0) as total_ask_price,
+        coalesce(total_bid_price, 0) as total_bid_price,
 
-        avg(total_ask_price) over() as avg_total_ask_price,
+        avg(total_bid_price) over() as avg_total_bid_price,
 
         convert_timezone(
             'America/Argentina/Buenos_Aires',

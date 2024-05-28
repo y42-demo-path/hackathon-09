@@ -28,8 +28,8 @@ filter_exchange_rates as (
 
         indicator_description,
         'BCRA' as source_reference,
-        indicator_value as total_ask_price,
-        avg(total_ask_price) over() as avg_total_ask_price,
+        indicator_value as total_bid_price,
+        avg(total_ask_price) over() as avg_total_bid_price,
         updated_at
         
     from renamed

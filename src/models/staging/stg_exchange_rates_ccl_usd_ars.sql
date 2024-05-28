@@ -5,7 +5,7 @@ with source as (
 		cast_to='varchar',
 		exclude=["DATETIME"],
 		field_name="exchange_rate_name",
-		value_name="total_ask_price"
+		value_name="total_bid_price"
 	) }}
 
 ),
@@ -21,7 +21,7 @@ renamed as (
 			and abroad.' as indicator_description,
 			
 		'Yahoo Finance' as source_reference,
-		total_ask_price::float as total_ask_price,
+		total_bid_price::float as total_bid_price,
 		avg(total_ask_price) over() as avg_total_ask_price,
         
         convert_timezone(

@@ -32,6 +32,8 @@ stage as (
         ask_price,
         total_ask_price,
 
+        avg(total_bid_price) over() as avg_total_bid_price,
+
         avg(total_ask_price) over() as avg_total_ask_price,
 
         convert_timezone(
