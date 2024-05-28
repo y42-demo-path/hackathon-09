@@ -47,6 +47,8 @@ models:
       - name: SOURCE_REFERENCE
         description: ""
         data_type: TEXT
+        tests:
+          - not_null
       - name: EXCHANGE_RATE_NAME
         data_type: TEXT
     tests:
