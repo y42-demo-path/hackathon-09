@@ -23,7 +23,7 @@ stage as (
 
         exchange_rate_name,
 
-        'The MEP dollar (or stock market dollar) arises from the buying and 
+        'The MEP dollar arises from the buying and 
 			selling of bonds and stocks that are traded in the local and 
 			foreign markets.' as indicator_description,  
 

@@ -16,7 +16,7 @@ renamed as (
 
 		concat('CCL ', exchange_rate_name) as exchange_rate_name,
 
-        'Exchange rate arises from the buying and selling of bonds 
+        'The CCL dollar arises from the buying and selling of bonds 
 			and stocks that are listed both in the local market 
 			and abroad.' as indicator_description,
 			
