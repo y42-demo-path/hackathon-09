@@ -18,9 +18,9 @@ sources:
           - name: DATETIME
             description: ""
             data_type: NUMBER
-          - name: CCL_YPF
+          - name: GGAL
             data_type: FLOAT
-          - name: CCL_GGAL
+          - name: YPF
             data_type: FLOAT
-          - name: CCL_PAMP
+          - name: PAMP
             data_type: FLOAT
