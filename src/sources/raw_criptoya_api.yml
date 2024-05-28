@@ -12,7 +12,7 @@ sources:
         users:
           - darb302@gmail.com
     tables:
-      - name: raw_exchange_rates_usd_ars
+      - name: raw_exchange_rates_other_usd_ars
         columns:
           - name: timestamp
             data_type: FLOAT
@@ -24,7 +24,7 @@ sources:
             data_type: TEXT
           - name: ask
             data_type: FLOAT
-      - name: raw_exchange_rates_usdt_ars
+      - name: raw_exchange_rates_cripto_usdt_ars
         columns:
           - name: time
             data_type: FLOAT

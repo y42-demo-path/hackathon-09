@@ -1,6 +1,6 @@
 with source as ( 
 
-    select * from {{ source('raw_bcra_api', 'raw_bcra_api') }}
+    select * from {{ source('raw_bcra_api', 'raw_exchange_rates_official_usd_ars') }}
 
 ),
 

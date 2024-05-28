@@ -15,7 +15,7 @@ sources:
       asset_status: verified
       tier: tier 3
     tables:
-      - name: raw_bcra_api
+      - name: raw_exchange_rates_official_usd_ars
         columns:
           - name: descripcion
             description: ""

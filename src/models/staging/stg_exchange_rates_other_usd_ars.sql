@@ -10,7 +10,7 @@
 with source as (
 	
 	select * 
-	from {{ source('raw_criptoya_api', 'raw_exchange_rates_usd_ars') }}
+	from {{ source('raw_criptoya_api', 'raw_exchange_rates_other_usd_ars') }}
 ),
 
 renamed as (
