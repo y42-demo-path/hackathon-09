@@ -10,15 +10,15 @@ models:
       y42:
         apiVersion: v1
     columns:
-      - name: variation
-        description: ""
-        data_type: FLOAT
-      - name: timestamp
-        description: ""
-        data_type: FLOAT
-      - name: price
-        description: ""
-        data_type: FLOAT
-      - name: index
-        description: ""
+      - name: EXCHANGE_RATE_NAME
         data_type: TEXT
+      - name: INDICATOR_DESCRIPTION
+        data_type: TEXT
+      - name: SOURCE_REFERENCE
+        data_type: TEXT
+      - name: TOTAL_ASK_PRICE
+        data_type: FLOAT
+      - name: AVG_TOTAL_ASK_PRICE
+        data_type: FLOAT
+      - name: UPDATED_AT
+        data_type: TIMESTAMP_TZ

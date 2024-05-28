@@ -22,8 +22,8 @@ filter_exchange_rates as (
     select
 
         case
-            when indicator_id = 4 then 'BCRA-Retailer'
-            when indicator_id = 5 then 'BCRA-Wholesale'
+            when indicator_id = 4 then 'Offical Retailer Dollar'
+            when indicator_id = 5 then 'Official Wholesale Dollar'
         end as exchange_rate_name,
 
         indicator_description,
