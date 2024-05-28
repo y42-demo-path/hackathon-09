@@ -16,9 +16,9 @@ def raw_ccl_usd_ars(context) -> pd.DataFrame:
         data = data.iloc[[-1]]
 
     # Calculation of the CCL dollar as the average of the CCL of GGAL, PAM, and YPF
-    df['CCL GGAL'] = data['GGAL.BA'] * 10 / data['GGAL']
-    df['CCL YPF'] = data['YPFD.BA'] * 1 / data['YPF']
-    df['CCL PAMP'] = data['PAMP.BA'] * 25 / data['PAM']
+    df['GGAL'] = data['GGAL.BA'] * 10 / data['GGAL']
+    df['YPF'] = data['YPFD.BA'] * 1 / data['YPF']
+    df['PAMP'] = data['PAMP.BA'] * 25 / data['PAM']
     df = df.reset_index()
     df.columns = df.columns.str.upper()
     df['DATETIME'] = df['DATETIME'].astype(int)

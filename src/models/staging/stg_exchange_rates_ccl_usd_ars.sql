@@ -13,7 +13,7 @@ renamed as (
 
 	select 
 
-		exchange_rate_name,
+		'CCL '+ exchange_rate_name as exchange_rate_name,
 
         'Exchange rate arises from the buying and selling of bonds 
 			and stocks that are listed both in the local market 
