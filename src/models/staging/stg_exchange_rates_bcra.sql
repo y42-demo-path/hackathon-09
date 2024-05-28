@@ -22,7 +22,7 @@ filter_exchange_rates as (
     select
 
         case
-            when indicator_id = 4 then 'Offical Retailer Dollar'
+            when indicator_id = 4 then 'Official Retailer Dollar'
             when indicator_id = 5 then 'Official Wholesale Dollar'
         end as exchange_rate_name,
 
