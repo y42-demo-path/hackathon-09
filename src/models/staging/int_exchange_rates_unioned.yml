@@ -1,7 +1,7 @@
 version: 2
 
 models:
-  - name: int_exchanges_rates_unioned
+  - name: int_exchange_rates_unioned
     meta:
       experts:
         users:
