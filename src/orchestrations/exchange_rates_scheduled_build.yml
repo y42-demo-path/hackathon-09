@@ -5,4 +5,4 @@ orchestrations:
     config:
       enabled: true
       command: y42 build -s +mrt_gaps_by_exchange_rate
-      cron: 0 10-17 * * *
+      cron: 0,30 10-19 * * *
