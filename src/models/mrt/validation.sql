@@ -4,6 +4,7 @@ with int_unioned_model as (
 
 )
 
-select *
+select PROCESSED_AT, count(*)
 from int_unioned_model
-where SOURCE_REFERENCE='BCRA'
+group by 1
+--where SOURCE_REFERENCE='BCRA'
