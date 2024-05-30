@@ -1,6 +1,7 @@
 {{
   config(
-    materialized = 'incremental'
+    materialized = 'incremental',
+    full_refresh = False
   )
 }}
 
@@ -15,8 +16,7 @@
         'total_ask_price',
         'avg_total_bid_price',
         'avg_total_ask_price',
-        'updated_at',
-        'current_timestamp'
+        'updated_at'
     ]
 %}
 
@@ -90,7 +90,7 @@ transformations as (
 	
     {% if is_incremental() %}
     
-    where processed_at > (select max(processed_at) from {{ this }})
+    where updated_at > (select max(updated_at) from {{ this }})
     
     {% endif %}
 
