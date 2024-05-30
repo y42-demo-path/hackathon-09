@@ -1,7 +1,6 @@
 {{
   config(
     materialized = 'incremental',
-    full_refresh = False,
     unique_key = ['exchange_rate_token']
   )
 }}
@@ -15,6 +14,7 @@
         'total_bid_price',
         'ask_price',
         'total_ask_price',
+        'avg_total_bid_price',
         'avg_total_ask_price',
         'updated_at'
     ]
@@ -50,7 +50,8 @@ fields_coalesced as (
         coalesce(bid_price, 0) as bid_price,
         coalesce(total_bid_price, 0) as total_bid_price,
         coalesce(ask_price, 0) as ask_price,
-        total_ask_price,
+        coalesce(total_ask_price, 0) as total_ask_price,
+        avg_total_bid_price,
         avg_total_ask_price,
         updated_at      
 
@@ -69,16 +70,16 @@ transformations as (
         {%- for types_bcra_exchange_rate in types_bcra_exchange_rates %}
         
             last_value(
-                case when exchange_rate_name = '{{ types_bcra_exchange_rate }}' then total_ask_price end
+                case when exchange_rate_name = '{{ types_bcra_exchange_rate }}' then total_bid_price end
             ignore nulls) over(order by updated_at)
                 as {{ dbt_utils.slugify(types_bcra_exchange_rate) }},
             
         {% endfor %}
 
             last_value(
-                case when exchange_rate_name like 'MEP%' then avg_total_ask_price end
+                case when exchange_rate_name like 'MEP%' then avg_total_bid_price end
             ignore nulls) over(order by updated_at)
-                as avg_mep_rate,
+                as avg_mep_dollar,
 
         current_timestamp as processed_at  
 
@@ -102,10 +103,11 @@ final as (
 		totaL_bid_price,
 		ask_price,
 		total_ask_price,
+        avg_total_bid_price,
 		avg_total_ask_price,
 		official_retailer_dollar,
 		official_wholesale_dollar,
-		avg_mep_rate,
+		avg_mep_dollar,
 		updated_at,
 		processed_at
 

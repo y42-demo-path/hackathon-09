@@ -9,3 +9,40 @@ models:
     config:
       y42:
         apiVersion: v1
+    columns:
+      - name: EXCHANGE_RATE_TOKEN
+        data_type: TEXT
+      - name: EXCHANGE_RATE_NAME
+        data_type: TEXT
+      - name: INDICATOR_DESCRIPTION
+        data_type: TEXT
+      - name: SOURCE_REFERENCE
+        data_type: TEXT
+      - name: BID_PRICE
+        data_type: FLOAT
+      - name: TOTAL_BID_PRICE
+        data_type: FLOAT
+      - name: ASK_PRICE
+        data_type: FLOAT
+      - name: TOTAL_ASK_PRICE
+        data_type: FLOAT
+      - name: AVG_TOTAL_BID_PRICE
+        data_type: FLOAT
+      - name: AVG_TOTAL_ASK_PRICE
+        data_type: FLOAT
+      - name: OFFICIAL_RETAILER_DOLLAR
+        data_type: FLOAT
+      - name: OFFICIAL_WHOLESALE_DOLLAR
+        data_type: FLOAT
+      - name: AVG_MEP_DOLLAR
+        data_type: FLOAT
+      - name: UPDATED_AT
+        data_type: TIMESTAMP_NTZ
+      - name: PROCESSED_AT
+        data_type: TIMESTAMP_LTZ
+      - name: GAP_OVER_OFFICIAL_RETAILER_EXCHANGE_RATE
+        data_type: FLOAT
+      - name: GAP_OVER_OFFICIAL_WHOLESALE_EXCHANGE_RATE
+        data_type: FLOAT
+      - name: GAP_OVER_MEP_EXCHANGE_RATE
+        data_type: FLOAT

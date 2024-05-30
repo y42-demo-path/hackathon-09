@@ -6,7 +6,7 @@ import json
 from y42.v1.decorators import data_loader
 
 @data_loader
-def raw_exchange_rates_usd_ars(context) -> pd.DataFrame:
+def raw_exchange_rates_other_usd_ars(context) -> pd.DataFrame:
     url = "https://criptoya.com/api/dolar"
     r = requests.get(url)
     
@@ -23,7 +23,7 @@ def raw_exchange_rates_usd_ars(context) -> pd.DataFrame:
 
 
 @data_loader
-def raw_exchange_rates_usdt_ars(context) -> pd.DataFrame:
+def raw_exchange_rates_cripto_usdt_ars(context) -> pd.DataFrame:
     url = "https://criptoya.com/api/usdt/ars/100"
     r = requests.get(url)
     

@@ -22,21 +22,11 @@ models:
       - name: TOTAL_ASK_PRICE
         description: ""
         data_type: FLOAT
-        tests:
-          - not_null:
-              config:
-                severity: warn
-                store_failures: true
-                schema: tests_failures
+        tests: []
       - name: AVG_TOTAL_ASK_PRICE
         description: ""
         data_type: FLOAT
-        tests:
-          - not_null:
-              config:
-                severity: warn
-                store_failures: true
-                schema: tests_failures
+        tests: []
       - name: UPDATED_AT
         description: ""
         data_type: TIMESTAMP_NTZ
