@@ -16,7 +16,8 @@
         'total_ask_price',
         'avg_total_bid_price',
         'avg_total_ask_price',
-        'updated_at'
+        'updated_at',
+        'current_timestamp'
     ]
 %}
 
@@ -81,7 +82,10 @@ transformations as (
             ignore nulls) over(order by updated_at)
                 as avg_mep_dollar,
 
-        current_timestamp as processed_at  
+        convert_timezone(
+            'America/Argentina/Buenos_Aires',
+            current_timestamp
+        ) as processed_at
 
     from fields_coalesced
 	
