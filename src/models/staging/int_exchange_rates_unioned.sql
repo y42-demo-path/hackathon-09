@@ -70,14 +70,14 @@ transformations as (
         {%- for types_bcra_exchange_rate in types_bcra_exchange_rates %}
         
             last_value(
-                case when exchange_rate_name = '{{ types_bcra_exchange_rate }}' then total_ask_price end
+                case when exchange_rate_name = '{{ types_bcra_exchange_rate }}' then total_bid_price end
             ignore nulls) over(order by updated_at)
                 as {{ dbt_utils.slugify(types_bcra_exchange_rate) }},
             
         {% endfor %}
 
             last_value(
-                case when exchange_rate_name like 'MEP%' then avg_total_ask_price end
+                case when exchange_rate_name like 'MEP%' then avg_total_bid_price end
             ignore nulls) over(order by updated_at)
                 as avg_mep_dollar,
 
