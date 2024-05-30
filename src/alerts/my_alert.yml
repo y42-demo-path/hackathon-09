@@ -1,0 +1,19 @@
+version: 2
+
+alerts:
+  - name: my_alert
+    config:
+      trigger:
+        type: orchestration_status
+        orchestrations:
+          - exchange_rates_scheduled_build
+        triggered_on:
+          - ready
+          - partially_ready
+          - invalid
+      destinations:
+        email:
+          email_addresses:
+            - darb302@gmail.com
+      y42:
+        apiVersion: v1
