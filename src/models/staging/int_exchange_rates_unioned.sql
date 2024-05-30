@@ -1,7 +1,8 @@
 {{
   config(
     materialized = 'incremental',
-    unique_key = ['exchange_rate_token']
+    unique_key = ['exchange_rate_token'],
+    incremental_strategy='merge'
   )
 }}
 
@@ -90,7 +91,9 @@ transformations as (
     from fields_coalesced
 	
     {% if is_incremental() %}
+    
     where updated_at > (select max(updated_at) from {{ this }})
+    
     {% endif %}
 
 ),
