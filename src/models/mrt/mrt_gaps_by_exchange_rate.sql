@@ -1,8 +1,5 @@
 {% set gap_over_mep_threshold = 0.05 %}
 {% set gap_over_official_threshold = 0.5 %}
-{% set change_total_bid_threshold = 0.03 %}
-{% set change_gap_over_official_threshold = 0.03 %}
-{% set change_gap_over_mep_threshold = 0.03 %}
 
 {% set metrics_threshold  = {
 
