@@ -16,10 +16,10 @@ def raw_exchange_rates_other_usd_ars(context) -> pd.DataFrame:
         df = df[['ahorro', 'tarjeta', 'blue']]
         df = df[df.index.isin(['price', 'timestamp', 'ask', 'bid'])]
         df = df.T.reset_index()
+        return df
     else: 
         logging.error(f"An error occurred. Error status_code: {r.status_code}")
     
-    return df
 
 
 @data_loader
@@ -31,10 +31,10 @@ def raw_exchange_rates_cripto_usdt_ars(context) -> pd.DataFrame:
         data = r.json() 
         df = pd.DataFrame(data)
         df = df.T.reset_index()
+        return df
     else: 
         logging.error(f"An error occurred. Error status_code: {r.status_code}")
     
-    return df
 
 @data_loader
 def raw_exchange_rates_mep_usd_ars(context) -> pd.DataFrame:
@@ -62,7 +62,6 @@ def raw_exchange_rates_mep_usd_ars(context) -> pd.DataFrame:
 
         df = pd.DataFrame(data)
         df = df.T.reset_index()
+        return df
     else: 
         logging.error(f"An error occurred. Error status_code: {r.status_code}")
-    
-    return df
