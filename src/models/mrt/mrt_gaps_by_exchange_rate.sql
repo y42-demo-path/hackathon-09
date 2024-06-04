@@ -9,6 +9,24 @@
 
 } %}
 
+{% set top_cripto_exchanges = 
+
+    'Buenbit',
+    'Ripio',
+    'Satoshitango',
+    'Decrypto',
+    'Letsbit',
+    'Binance P2P',
+    'Fiwind',
+    'Lemon Cash',
+    'Belo',
+    'Tiendacrypto',
+    'Cocos Crypto' 
+
+%}
+
+
+
 
 with int_unioned_model as (
 
@@ -39,8 +57,9 @@ gaps as (
         max(
             iff(
                 source_reference = 'Criptoya - Cripto'
-                and exchange_rate_name in ('Binance P2P', 'Buenbit'),
-                total_bid_price, null
+                and exchange_rate_name in {{ top_cripto_exchanges }},
+                total_bid_price, 
+                null
             )
         ) over (
             partition by processed_at
@@ -49,7 +68,7 @@ gaps as (
         min(
             iff(
                 source_reference = 'Criptoya - Cripto'
-                and exchange_rate_name in ('Binance P2P', 'Buenbit'),
+                and exchange_rate_name in {{ top_cripto_exchanges }},
                 total_ask_price,
                 null
             )
@@ -70,10 +89,10 @@ gaps as (
 
         {% for metrics in metrics_threshold %}
 
-            lag({{ metrics }}) over (
-            partition by exchange_rate_name
-            order by processed_at
-        ) as {{ metrics }}_lagged,
+            ,lag({{ metrics }}) over (
+                partition by exchange_rate_name
+                order by processed_at
+            ) as {{ metrics }}_lagged
 
         {% endfor %}
 
@@ -91,18 +110,18 @@ changes as (
 
         {% for metrics, threshold  in metrics_threshold.items() %}
 
-             first_value({{ metrics }}_lagged) over (
+            ,first_value({{ metrics }}_lagged) over (
                 partition by exchange_rate_name
                 order by updated_at
-            ) as {{ metrics }}_previous_close_day,
+            ) as {{ metrics }}_previous_close_day
 
-            {{ dbt_utils.safe_divide(
+            ,{{ dbt_utils.safe_divide(
                 metrics, 
                 metrics ~ '_previous_close_day'
-            ) }} -1 as change_{{ metrics }}_previous_day,
+            ) }} -1 as change_{{ metrics }}_previous_day
 
-            change_{{ metrics }}_previous_day > {{ threshold }}
-                as is_high_change_{{ metrics }},
+            ,change_{{ metrics }}_previous_day > {{ threshold }}
+                as is_high_change_{{ metrics }}
 
         {% endfor %}
 

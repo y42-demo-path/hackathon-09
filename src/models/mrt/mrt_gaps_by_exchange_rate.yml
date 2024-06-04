@@ -11,38 +11,70 @@ models:
         apiVersion: v1
     columns:
       - name: EXCHANGE_RATE_TOKEN
+        description: ""
         data_type: TEXT
       - name: EXCHANGE_RATE_NAME
+        description: ""
         data_type: TEXT
       - name: INDICATOR_DESCRIPTION
+        description: ""
         data_type: TEXT
       - name: SOURCE_REFERENCE
+        description: ""
         data_type: TEXT
       - name: BID_PRICE
+        description: ""
         data_type: FLOAT
       - name: TOTAL_BID_PRICE
+        description: ""
         data_type: FLOAT
       - name: ASK_PRICE
+        description: ""
         data_type: FLOAT
       - name: TOTAL_ASK_PRICE
+        description: ""
         data_type: FLOAT
       - name: AVG_TOTAL_BID_PRICE
+        description: ""
         data_type: FLOAT
       - name: AVG_TOTAL_ASK_PRICE
+        description: ""
         data_type: FLOAT
       - name: OFFICIAL_RETAILER_DOLLAR
+        description: ""
         data_type: FLOAT
       - name: OFFICIAL_WHOLESALE_DOLLAR
+        description: ""
         data_type: FLOAT
       - name: AVG_MEP_DOLLAR
+        description: ""
         data_type: FLOAT
       - name: UPDATED_AT
+        description: ""
         data_type: TIMESTAMP_NTZ
       - name: PROCESSED_AT
-        data_type: TIMESTAMP_LTZ
+        description: ""
+        data_type: TIMESTAMP_TZ
       - name: GAP_OVER_OFFICIAL_RETAILER_EXCHANGE_RATE
+        description: ""
         data_type: FLOAT
       - name: GAP_OVER_OFFICIAL_WHOLESALE_EXCHANGE_RATE
+        description: ""
         data_type: FLOAT
       - name: GAP_OVER_MEP_EXCHANGE_RATE
+        description: ""
+        data_type: FLOAT
+      - name: IS_HIGH_MEP_GAP
+        data_type: BOOLEAN
+      - name: TOTAL_BID_PRICE_LAGGED
+        data_type: FLOAT
+      - name: GAP_OVER_MEP_EXCHANGE_RATE_LAGGED
+        data_type: FLOAT
+      - name: TOTAL_BID_PRICE_PREVIOUS_CLOSE_DAY
+        data_type: FLOAT
+      - name: GAP_OVER_MEP_EXCHANGE_RATE_PREVIOUS_CLOSE_DAY
+        data_type: FLOAT
+      - name: CHANGE_TOTAL_BID_PRICE_PREVIOUS_DAY
+        data_type: FLOAT
+      - name: CHANGE_GAP_OVER_MEP_PREVIOUS_DAY
         data_type: FLOAT
