@@ -1,12 +1,11 @@
-with int_unioned_model as ( 
+with ref as ( 
 
-    select * from {{ ref('int_exchange_rates_unioned') }}
+    select * from {{ ref('mrt_gaps_by_exchange_rate') }}
 
 )
 
-select exchange_rate_name, count(*)
-from int_unioned_model
-where SOURCE_REFERENCE='Criptoya'
-group by 1
-order by 1
---
+select *
+from ref
+where 
+is_high_official_gap
+and processed_at in (select max(processed_at) from ref)
