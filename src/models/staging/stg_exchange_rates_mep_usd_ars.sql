@@ -27,7 +27,7 @@ stage as (
 			selling of bonds and stocks that are traded in the local and 
 			foreign markets.' as indicator_description,  
 
-        'Criptoya' as source_reference,
+        'Criptoya - MEP' as source_reference,
         coalesce(total_bid_price, 0) as total_bid_price,
 
         avg(total_bid_price) over() as avg_total_bid_price,

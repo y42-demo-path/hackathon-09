@@ -26,7 +26,7 @@ stage as (
 
         {{ map_values_from_seed('exchange_rate_name','exchange_names_mapping') }} as exchange_rate_name,
         'Cripto Exchange Rate (USDT / ARS)'  as indicator_description,
-        'Criptoya' as source_reference,
+        'Criptoya - Cripto' as source_reference,
         bid_price,
         total_bid_price,
         ask_price,
