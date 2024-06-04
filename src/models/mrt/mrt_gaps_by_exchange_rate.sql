@@ -5,7 +5,7 @@
 {% set metrics_threshold  = {
 
     'total_bid_price': 0.03,
-    'gap_over_official_retailer_exchange_rate': 0.03,
+    'gap_over_official_wholesale_exchange_rate': 0.03,
     'gap_over_mep_exchange_rate': 0.03
 
 } %}
@@ -83,7 +83,7 @@ gaps as (
 
         arbitrage_ratio > {{ arbitrage_threshold }} as is_arbitrage_opportunity,
 
-        gap_over_official_retailer_exchange_rate > {{ gap_over_official_threshold }}
+        gap_over_official_wholesale_exchange_rate > {{ gap_over_official_threshold }}
             as is_high_official_gap,
         gap_over_mep_exchange_rate > {{ gap_over_mep_threshold }}
             as is_high_mep_gap
