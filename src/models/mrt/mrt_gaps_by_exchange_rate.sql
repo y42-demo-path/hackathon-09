@@ -1,5 +1,5 @@
 {% set gap_over_mep_threshold = 0.05 %}
-{% set gap_over_official_threshold = 0.45 %}
+{% set gap_over_official_threshold = 0.4 %}
 
 {% set metrics_threshold  = {
 
