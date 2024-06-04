@@ -18,7 +18,7 @@ def raw_exchange_rates_other_usd_ars(context) -> pd.DataFrame:
         df = df.T.reset_index()
         return df
     else: 
-        logging.error(f"An error occurred. Error status_code: {r.status_code}")
+        logging.info(f"An error occurred. Error status_code: {r.status_code}")
     
 
 
@@ -33,7 +33,7 @@ def raw_exchange_rates_cripto_usdt_ars(context) -> pd.DataFrame:
         df = df.T.reset_index()
         return df
     else: 
-        logging.error(f"An error occurred. Error status_code: {r.status_code}")
+        logging.info(f"An error occurred. Error status_code: {r.status_code}")
     
 
 @data_loader
@@ -64,4 +64,4 @@ def raw_exchange_rates_mep_usd_ars(context) -> pd.DataFrame:
         df = df.T.reset_index()
         return df
     else: 
-        logging.error(f"An error occurred. Error status_code: {r.status_code}")
+        logging.info(f"An error occurred. Error status_code: {r.status_code}")

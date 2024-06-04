@@ -1,5 +1,6 @@
 {% set gap_over_mep_threshold = 0.05 %}
 {% set gap_over_official_threshold = 0.4 %}
+{% set arbitrage_threshold = 0.01 %}
 
 {% set metrics_threshold  = {
 
@@ -76,11 +77,11 @@ gaps as (
             partition by processed_at
         ) as min_total_ask_price,
 
-        max_total_bid_price > min_total_ask_price as is_arbitrage_opportunity,
-
         {{ dbt_utils.safe_divide(
             'max_total_bid_price', 'min_total_ask_price'
         ) }} -1 as arbitrage_ratio,
+
+        arbitrage_ratio > arbitrage_threshold as is_arbitrage_opportunity,
 
         gap_over_official_retailer_exchange_rate > {{ gap_over_official_threshold }}
             as is_high_official_gap,
@@ -110,17 +111,12 @@ changes as (
 
         {% for metrics, threshold  in metrics_threshold.items() %}
 
-            ,first_value({{ metrics }}_lagged) over (
-                partition by exchange_rate_name
-                order by updated_at
-            ) as {{ metrics }}_previous_close_day
-
             ,{{ dbt_utils.safe_divide(
                 metrics, 
-                metrics ~ '_previous_close_day'
-            ) }} -1 as change_{{ metrics }}_previous_day
+                metrics ~ '_lagged'
+            ) }} -1 as change_{{ metrics }}
 
-            ,change_{{ metrics }}_previous_day > {{ threshold }}
+            ,change_{{ metrics }} > {{ threshold }}
                 as is_high_change_{{ metrics }}
 
         {% endfor %}

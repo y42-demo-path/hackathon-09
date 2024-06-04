@@ -6,6 +6,6 @@ with ref as (
 
 select *
 from ref
-where 
-is_high_official_gap
-and processed_at in (select max(processed_at) from ref)
+where
+EXCHANGE_RATE_NAME = 'Binance P2P' 
+--processed_at in (select max(processed_at) from ref)

@@ -15,7 +15,7 @@ def raw_exchange_rates_official_usd_ars(context) -> pd.DataFrame:
     if r.status_code == 200:
         data = r.json() 
         df = pd.DataFrame(data['results'])
+        return df
     else: 
-        logging.error(f"An error occurred. Error status_code: {r.status_code}")
-    
-    return df
+        logging.info(f"An error occurred. Error status_code: {r.status_code}")
+

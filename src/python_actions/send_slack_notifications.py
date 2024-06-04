@@ -22,26 +22,63 @@ def business_alert(context,assets):
     # Business logic: 
     # Filter by the most recent date and where the condition that the gap is high is satisfied.
     most_recent_date = gaps['PROCESSED_AT'].max()
-    most_recent_data = gaps[gaps['PROCESSED_AT'] == most_recent_date]
+    most_recent_data = gaps[(gaps['PROCESSED_AT'] == most_recent_date) & (gaps['EXCHANGE_RATE_NAME'] != 'Tourist Dollar')]
+    
+    
     high_official_gap = most_recent_data[most_recent_data['IS_HIGH_OFFICIAL_GAP']] 
+    high_official_mep = most_recent_data[most_recent_data['IS_HIGH_MEP_GAP']] 
+    is_arbitrage_opportunity = most_recent_data[most_recent_data['IS_ARBITRAGE_OPPORTUNITY']] 
 
     # Check if there are any high revenue items. If so, proceed with the notification.
     if not high_official_gap.empty:
         # Send a POST request to the Slack webhook URL with the message payload.
 
         for i, j in high_official_gap.iterrows():
-            title = f"my {j['IS_HIGH_OFFICIAL_GAP']}. title"
-            body = f"this is a random description based on the value of row {i}"
 
-            my_obj = {title : body}
+            exchange_name = j['EXCHANGE_RATE_NAME']
+            official_gap_value = round(j['GAP_OVER_OFFICIAL_RETAILER_EXCHANGE_RATE'] * 100, 2)
+
+            body = f"The {exchange_name} has a gap over the official exchange rate of: {official_gap_value}%"
+
+            logging.info(body)
+
+    if not high_official_mep.empty:
+        # Send a POST request to the Slack webhook URL with the message payload.
+
+        for i, j in high_official_gap.iterrows():
+
+            exchange_name = j['EXCHANGE_RATE_NAME']
+            mep_gap_value = round(j['GAP_OVER_MEP_EXCHANGE_RATE'] * 100, 2)
+
+            body = f"The {exchange_name} has a gap over the MEP exchange rate of: {mep_gap_value}%"
+
+            logging.info(body)
+
+
+    if not is_arbitrage_opportunity.empty:
+        # Send a POST request to the Slack webhook URL with the message payload.
+        
+        is_arbitrage_opportunity = is_arbitrage_opportunity.sort_values(by='ARBITRAGE_RATIO', ascending = False).head(1) 
+
+        for i, j in is_arbitrage_opportunity.iterrows():
+
+            exchange_name = j['EXCHANGE_RATE_NAME']
+            arbitrage_value = round(j['ARBITRAGE_RATIO'] * 100, 2)
+
+            body = f"The {exchange_name} has a arbitrage opportunity of: {arbitrage_value}%"
+
+            logging.info(body)
+
+
+
 
         #response = requests.post(webhook_url, json=my_obj, headers=headers)
 
-        response = requests.post(webhook_url, json={"key_variable_defined_for_automation": "Hello from Y42"}, headers=headers)
+        #response = requests.post(webhook_url, json={"key_variable_defined_for_automation": "Hello from Y42"}, headers=headers)
 
 
         # Log the response status code, headers and text for debugging purposes.
-        logging.info(response.status_code)
-        logging.info(response.headers)
-        logging.info(response.text)
+        #logging.info(response.status_code)
+        #logging.info(response.headers)
+        #logging.info(response.text)
 
