@@ -52,9 +52,9 @@ def business_alert(context,assets):
             exchange_name = j['EXCHANGE_RATE_NAME']
             official_gap_value = round(j['GAP_OVER_OFFICIAL_RETAILER_EXCHANGE_RATE'] * 100, 2)
 
-            body_gap_official = f"The {exchange_name} has a gap over the official exchange rate of: {official_gap_value}%"
+            body = f"The {exchange_name} has a gap over the official exchange rate of: {official_gap_value}%"
           
-            response = requests.post(webhook_url, json={"body_gap_official": body_gap_official}, headers=headers)
+            response = requests.post(webhook_url, json={"body": body}, headers=headers)
             
             # Log the response status code and headers for debugging purposes.
             logging.info(response.status_code)
@@ -68,9 +68,9 @@ def business_alert(context,assets):
             exchange_name = j['EXCHANGE_RATE_NAME']
             mep_gap_value = round(j['GAP_OVER_MEP_EXCHANGE_RATE'] * 100, 2)
 
-            body_gap_mep = f"The {exchange_name} has a gap over the MEP exchange rate of: {mep_gap_value}%"
+            body = f"The {exchange_name} has a gap over the MEP exchange rate of: {mep_gap_value}%"
 
-            response = requests.post(webhook_url, json={"body_gap_mep": body_gap_mep}, headers=headers)
+            response = requests.post(webhook_url, json={"body": body}, headers=headers)
             
             # Log the response status code and headers for debugging purposes.
             logging.info(response.status_code)
@@ -87,9 +87,9 @@ def business_alert(context,assets):
             exchange_name = j['EXCHANGE_RATE_NAME']
             arbitrage_value = round(j['ARBITRAGE_RATIO'] * 100, 2)
 
-            body_arbitrage = f"The {exchange_name} has a arbitrage opportunity of: {arbitrage_value}%"
+            body = f"The {exchange_name} has a arbitrage opportunity of: {arbitrage_value}%"
 
-            response = requests.post(webhook_url, json={"body_arbitrage": body_arbitrage}, headers=headers)
+            response = requests.post(webhook_url, json={"body": body}, headers=headers)
             
             # Log the response status code and headers for debugging purposes.
             logging.info(response.status_code)
@@ -103,9 +103,9 @@ def business_alert(context,assets):
             exchange_name = j['EXCHANGE_RATE_NAME']
             increase_percentage = round(j['CHANGE_TOTAL_BID_PRICE'] * 100, 2)
 
-            body_change = f"The price of the dollar has risen {increase_percentage}% on {exchange_name} exchange in the last 30 minutes."
+            body = f"The price of the dollar has risen {increase_percentage}% on {exchange_name} exchange in the last 30 minutes."
 
-            response = requests.post(webhook_url, json={"body_change": body_change}, headers=headers)
+            response = requests.post(webhook_url, json={"body": body}, headers=headers)
             
             # Log the response status code and headers for debugging purposes.
             logging.info(response.status_code)
