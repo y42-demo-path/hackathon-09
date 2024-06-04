@@ -83,7 +83,7 @@ gaps as (
             'max_total_bid_price', 'min_total_ask_price'
         ) }} -1 as arbitrage_ratio,
 
-        arbitrage_ratio > arbitrage_threshold as is_arbitrage_opportunity,
+        arbitrage_ratio > {{ arbitrage_threshold }} as is_arbitrage_opportunity,
 
         gap_over_official_retailer_exchange_rate > {{ gap_over_official_threshold }}
             as is_high_official_gap,
