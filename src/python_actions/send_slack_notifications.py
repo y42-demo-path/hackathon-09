@@ -32,7 +32,7 @@ def business_alert(context,assets):
     is_arbitrage_opportunity_filtered = most_recent_data[(most_recent_data['SOURCE_REFERENCE'] == 'Criptoya - Cripto') & (most_recent_data['IS_TOP_CRIPTO_EXCHANGES'] == True)]
     is_arbitrage_opportunity = is_arbitrage_opportunity_filtered[is_arbitrage_opportunity_filtered['IS_ARBITRAGE_OPPORTUNITY']] 
 
-    change_bid_price = most_recent_data[most_recent_data['IS_HIGH_CHANGE_TOTAL_BID_PRICE']] 
+    change_bid_price = most_recent_data[most_recent_data['IS_HIGH_CHANGE_TOTAL_BID_PRICE'] == True] 
         
 
     # Check if there are any high revenue items. If so, proceed with the notification.
@@ -88,13 +88,9 @@ def business_alert(context,assets):
             logging.info(body)
 
 
-        #response = requests.post(webhook_url, json=my_obj, headers=headers)
+        # response = requests.post(webhook_url, json=body, headers=headers)
 
-        #response = requests.post(webhook_url, json={"key_variable_defined_for_automation": "Hello from Y42"}, headers=headers)
-
-
-        # Log the response status code, headers and text for debugging purposes.
-        #logging.info(response.status_code)
-        #logging.info(response.headers)
-        #logging.info(response.text)
+        # Log the response status code and headers for debugging purposes.
+        # logging.info(response.status_code)
+        # logging.info(response.headers)
 
