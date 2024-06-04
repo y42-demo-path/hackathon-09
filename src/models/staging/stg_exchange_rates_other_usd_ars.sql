@@ -45,7 +45,7 @@ stage as (
             else exchange_rate_name
         end as indicator_description,    
 
-        'Criptoya' as source_reference,
+        'Criptoya - USD' as source_reference,
         coalesce(total_bid_price, price, 0) as total_bid_price,
         coalesce(total_ask_price, price, 0) as total_ask_price,
         avg(total_bid_price) over() as avg_total_bid_price,

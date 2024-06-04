@@ -4,7 +4,9 @@ with int_unioned_model as (
 
 )
 
-select PROCESSED_AT, count(*)
+select exchange_rate_name, count(*)
 from int_unioned_model
+where SOURCE_REFERENCE='Criptoya'
 group by 1
---where SOURCE_REFERENCE='BCRA'
+order by 1
+--
