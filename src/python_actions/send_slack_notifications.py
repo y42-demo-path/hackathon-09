@@ -22,7 +22,11 @@ def business_alert(context,assets):
     # Business logic: 
     # Filter by the most recent date and where the condition that the gap is high is satisfied.
     most_recent_date = gaps['PROCESSED_AT'].max()
-    most_recent_data = gaps[(gaps['PROCESSED_AT'] == most_recent_date) & (gaps['EXCHANGE_RATE_NAME'] != 'Tourist Dollar')]
+    
+    most_recent_data = gaps[
+        (gaps['PROCESSED_AT'] == most_recent_date) & 
+        (gaps['EXCHANGE_RATE_NAME'] != 'Tourist Dollar')
+    ]
     
     high_official_gap = most_recent_data[most_recent_data['IS_HIGH_OFFICIAL_GAP']]
     high_official_mep = most_recent_data[most_recent_data['IS_HIGH_MEP_GAP']]
