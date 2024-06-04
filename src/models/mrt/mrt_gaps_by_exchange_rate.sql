@@ -1,11 +1,11 @@
-{% set gap_over_mep_threshold = 0.05 %}
-{% set gap_over_official_threshold = 0.4 %}
+{% set gap_over_mep_threshold = 0.03 %}
+{% set gap_over_official_threshold = 0.45 %}
 {% set arbitrage_threshold = 0.01 %}
 
 {% set metrics_threshold  = {
 
-    'total_bid_price': 0.03,
-    'gap_over_official_wholesale_exchange_rate': 0.03,
+    'total_bid_price': 0.01,
+    'gap_over_official_wholesale_exchange_rate': 0.015,
     'gap_over_mep_exchange_rate': 0.03
 
 } %}

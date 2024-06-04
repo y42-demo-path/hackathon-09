@@ -6,7 +6,7 @@ with ref as (
 
 select *
 from ref
-where
-EXCHANGE_RATE_NAME = 'Binance P2P'
-ORDER BY processed_at
+--where
+--EXCHANGE_RATE_NAME = 'Binance P2P'
+ORDER BY gap_over_official_wholesale_exchange_rate desc, processed_at
 -- processed_at in (select max(processed_at) from ref)
