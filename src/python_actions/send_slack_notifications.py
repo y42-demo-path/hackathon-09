@@ -27,7 +27,11 @@ def business_alert(context,assets):
     
     high_official_gap = most_recent_data[most_recent_data['IS_HIGH_OFFICIAL_GAP']] 
     high_official_mep = most_recent_data[most_recent_data['IS_HIGH_MEP_GAP']] 
-    is_arbitrage_opportunity = most_recent_data[most_recent_data['IS_ARBITRAGE_OPPORTUNITY']] 
+
+    
+    is_arbitrage_opportunity_filtered = most_recent_data[(most_recent_data['SOURCE_REFERENCE'] == 'Criptoya - Cripto') & (most_recent_data['IS_TOP_CRIPTO_EXCHANGES'] == True)]
+    is_arbitrage_opportunity = is_arbitrage_opportunity_filtered[is_arbitrage_opportunity_filtered['IS_ARBITRAGE_OPPORTUNITY']] 
+
 
     # Check if there are any high revenue items. If so, proceed with the notification.
     if not high_official_gap.empty:

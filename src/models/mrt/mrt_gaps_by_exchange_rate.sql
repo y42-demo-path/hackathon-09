@@ -41,6 +41,8 @@ gaps as (
 
         *,
 
+        exchange_rate_name in {{ top_cripto_exchanges }} as is_top_cripto_exchanges,
+
         {{ dbt_utils.safe_divide(
             'total_bid_price', 
             'official_retailer_dollar'
@@ -58,7 +60,7 @@ gaps as (
         max(
             iff(
                 source_reference = 'Criptoya - Cripto'
-                and exchange_rate_name in {{ top_cripto_exchanges }},
+                and is_top_cripto_exchanges,
                 total_bid_price, 
                 null
             )
@@ -69,7 +71,7 @@ gaps as (
         min(
             iff(
                 source_reference = 'Criptoya - Cripto'
-                and exchange_rate_name in {{ top_cripto_exchanges }},
+                and is_top_cripto_exchanges,
                 total_ask_price,
                 null
             )
