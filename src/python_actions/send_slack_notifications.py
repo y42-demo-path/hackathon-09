@@ -103,7 +103,10 @@ def business_alert(context,assets):
             exchange_name = j['EXCHANGE_RATE_NAME']
             increase_percentage = round(j['CHANGE_TOTAL_BID_PRICE'] * 100, 2)
 
-            body = f"The price of the dollar (bid) has risen {increase_percentage}% on {exchange_name} exchange in the last 30 minutes."
+            current_value = round(j['TOTAL_BID_PRICE'], 2)
+            previous_value = round(j['TOTAL_BID_PRICE_LAGGED'], 2)
+
+            body = f"The price of the dollar (bid) has risen {increase_percentage}% (from ${previous_value} to ${current_value}) on {exchange_name} in the last 30 minutes."
 
             response = requests.post(webhook_url, json={"body": body}, headers=headers)
             
