@@ -80,7 +80,10 @@ def business_alert(context,assets):
     if not is_arbitrage_opportunity.empty:
         # Send a POST request to the Slack webhook URL with the message payload.
         
-        is_arbitrage_opportunity = is_arbitrage_opportunity.sort_values(by='ARBITRAGE_RATIO', ascending = False).head(1) 
+        is_arbitrage_opportunity = is_arbitrage_opportunity.sort_values(
+            by='ARBITRAGE_RATIO', 
+            ascending = False
+        ).head(1) 
 
         for i, j in is_arbitrage_opportunity.iterrows():
 
