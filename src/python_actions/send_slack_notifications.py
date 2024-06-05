@@ -50,7 +50,7 @@ def business_alert(context,assets):
         for i, j in high_official_gap.iterrows():
 
             exchange_name = j['EXCHANGE_RATE_NAME']
-            official_gap_value = round(j['GAP_OVER_OFFICIAL_RETAILER_EXCHANGE_RATE'] * 100, 2)
+            official_gap_value = round(j['GAP_OVER_OFFICIAL_WHOLESALE_EXCHANGE_RATE'] * 100, 2)
 
             body = f"The {exchange_name} has a gap over the official exchange rate of: {official_gap_value}%"
           
