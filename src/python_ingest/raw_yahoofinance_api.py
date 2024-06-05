@@ -14,9 +14,13 @@ def raw_exchange_rates_ccl_usd_ars(context) -> pd.DataFrame:
     df = pd.DataFrame()
 
     for ticker in tickers:
-        data[ticker] = yf.download(ticker, period='1d', interval='5m')['Adj Close']
-        data = data.iloc[[-1]]
-
+        try:
+            data[ticker] = yf.download(ticker, period='1d', interval='5m')['Adj Close']
+        except:
+            logging.info(f"The {ticker} is not available.")
+    
+    data = data.iloc[[-1]]
+    
     if data.shape[1] >= 6:
         # Calculation of the CCL dollar as the average of the CCL of GGAL, PAM, and YPF
         df['GGAL'] = data['GGAL.BA'] * 10 / data['GGAL']
