@@ -28,16 +28,46 @@ sources:
         columns:
           - name: time
             data_type: FLOAT
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+            description: Timestamp of the update of the entity.
           - name: totalBid
             data_type: FLOAT
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+            description: Final sale price including transfer and trade fees.
           - name: totalAsk
             data_type: FLOAT
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+            description: Final purchase price including transfer and trade fees.
           - name: bid
             data_type: FLOAT
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+            description: Sale price reported by the exchange, excluding fees.
           - name: index
             data_type: TEXT
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+            description: Unique ID of the entity.
           - name: ask
             data_type: FLOAT
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+            description: Purchase price reported by the exchange, excluding fees
       - name: raw_exchange_rates_mep_usd_ars
         columns:
           - name: variation

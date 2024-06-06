@@ -21,7 +21,7 @@ sources:
             description: "Indicator description in English."
             data_type: TEXT
           - name: idVariable
-            description: "Unique ID for the indicator."
+            description: "Unique ID of the entity."
             data_type: NUMBER
             tests: []
           - name: valor
