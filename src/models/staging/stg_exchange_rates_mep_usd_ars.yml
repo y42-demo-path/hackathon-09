@@ -11,14 +11,20 @@ models:
         apiVersion: v1
     columns:
       - name: EXCHANGE_RATE_NAME
+        description: "Names of the exchange rates."
         data_type: TEXT
       - name: INDICATOR_DESCRIPTION
+        description: "Indicator description."
         data_type: TEXT
       - name: SOURCE_REFERENCE
+        description: "Source of data (BCRA, Criptoya, Yahoo Finance)"
         data_type: TEXT
-      - name: TOTAL_ASK_PRICE
-        data_type: FLOAT
-      - name: AVG_TOTAL_ASK_PRICE
-        data_type: FLOAT
       - name: UPDATED_AT
+        description: "Timestamp of the update of the entity."
         data_type: TIMESTAMP_TZ
+      - name: TOTAL_BID_PRICE
+        data_type: FLOAT
+        description: Final sale price including transfer and trade fees.
+      - name: AVG_TOTAL_BID_PRICE
+        data_type: FLOAT
+        description: Average of the final sale price including transfer and trade fees.

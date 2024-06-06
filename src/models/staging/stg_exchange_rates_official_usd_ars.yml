@@ -11,36 +11,32 @@ models:
         apiVersion: v1
     columns:
       - name: INDICATOR_DESCRIPTION
-        description: ""
+        description: "Indicator description."
         data_type: TEXT
         tests:
-          - not_null:
-              config:
-                severity: warn
-                store_failures: true
-                schema: tests_failures
-      - name: TOTAL_ASK_PRICE
-        description: ""
-        data_type: FLOAT
-        tests: []
-      - name: AVG_TOTAL_ASK_PRICE
-        description: ""
-        data_type: FLOAT
-        tests: []
+          - not_null
       - name: UPDATED_AT
-        description: ""
+        description: "Timestamp of the update of the entity."
         data_type: TIMESTAMP_NTZ
         tests:
-          - not_null:
-              config:
-                severity: warn
+          - not_null
       - name: SOURCE_REFERENCE
-        description: ""
+        description: "Source of data (BCRA, Criptoya, Yahoo Finance)"
         data_type: TEXT
         tests:
           - not_null
       - name: EXCHANGE_RATE_NAME
+        description: "Names of the exchange rates."
         data_type: TEXT
+        tests:
+          - not_null
+          - unique
+      - name: TOTAL_BID_PRICE
+        data_type: FLOAT
+        description: Final sale price including transfer and trade fees.
+      - name: AVG_TOTAL_BID_PRICE
+        data_type: FLOAT
+        description: Average of the final sale price including transfer and trade fees.
     tests:
       - dbt_utils.recency:
           datepart: day

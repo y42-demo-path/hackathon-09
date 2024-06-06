@@ -18,6 +18,10 @@ sources:
           - name: DATETIME
             description: "Timestamp of the update of the entity."
             data_type: NUMBER
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
           - name: GGAL
             data_type: FLOAT
             description: CCL Exchange Rate for Banco Galicia.

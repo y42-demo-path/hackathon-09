@@ -12,33 +12,49 @@ models:
       y42:
         apiVersion: v1
     columns:
-      - name: EXCHANGE_RATES_TOKEN
-        data_type: TEXT
       - name: EXCHANGE_RATE_NAME
+        description: "Names of the exchange rates."
         data_type: TEXT
       - name: INDICATOR_DESCRIPTION
+        description: "Indicator description."
         data_type: TEXT
       - name: SOURCE_REFERENCE
+        description: "Source of data (BCRA, Criptoya, Yahoo Finance)"
         data_type: TEXT
       - name: BID_PRICE
+        description: "Sale price reported by the exchange, excluding fees."
         data_type: FLOAT
       - name: TOTAL_BID_PRICE
+        description: "Final sale price including transfer and trade fees"
         data_type: FLOAT
       - name: ASK_PRICE
+        description: "Purchase price reported by the exchange, excluding fees"
         data_type: FLOAT
       - name: TOTAL_ASK_PRICE
+        description: "Final purchase price including transfer and trade fees."
         data_type: FLOAT
       - name: AVG_TOTAL_ASK_PRICE
+        description: "Average of the final purchase price including transfer and trade
+          fees."
         data_type: FLOAT
       - name: UPDATED_AT
+        description: "Timestamp of the update of the entity."
         data_type: TIMESTAMP_NTZ
-      - name: BCRA_RETAILER_OFFICIAL_RATE
-        data_type: FLOAT
-      - name: GAP_OVER_BCRA_RETAILER_OFFICIAL_RATE
-        data_type: FLOAT
-      - name: BCRA_WHOLESALE_OFFICIAL_RATE
-        data_type: FLOAT
-      - name: GAP_OVER_BCRA_WHOLESALE_OFFICIAL_RATE
-        data_type: FLOAT
       - name: PROCESSED_AT
-        data_type: TIMESTAMP_LTZ
+        description: "Timestamp when the entity was processed."
+        data_type: TIMESTAMP_TZ
+      - name: EXCHANGE_RATE_TOKEN
+        data_type: TEXT
+        description: Unique token of the entity.
+      - name: AVG_TOTAL_BID_PRICE
+        data_type: FLOAT
+        description: Final sale price including transfer and trade fees (Average).
+      - name: OFFICIAL_RETAILER_DOLLAR
+        data_type: FLOAT
+        description: Official retailer exchange rate.
+      - name: OFFICIAL_WHOLESALE_DOLLAR
+        data_type: FLOAT
+        description: Official wholesale exchange rate.
+      - name: AVG_MEP_DOLLAR
+        data_type: FLOAT
+        description: Average of the MEP exchange rate.

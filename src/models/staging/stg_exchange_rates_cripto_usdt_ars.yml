@@ -11,42 +11,49 @@ models:
         apiVersion: v1
     columns:
       - name: EXCHANGE_RATE_NAME
-        description: ""
+        description: "Names of the exchange rates."
         data_type: TEXT
         tests:
           - not_null
           - unique
       - name: BID_PRICE
-        description: ""
+        description: "Sale price reported by the exchange, excluding fees."
         data_type: FLOAT
         tests:
           - not_null
       - name: TOTAL_BID_PRICE
-        description: ""
+        description: "Final sale price including transfer and trade fees"
         data_type: FLOAT
         tests:
           - not_null
       - name: ASK_PRICE
-        description: ""
+        description: "Purchase price reported by the exchange, excluding fees"
         data_type: FLOAT
         tests:
           - not_null
       - name: TOTAL_ASK_PRICE
-        description: ""
+        description: "Final purchase price including transfer and trade fees."
         data_type: FLOAT
         tests:
           - not_null
       - name: UPDATED_AT
-        description: ""
+        description: Timestamp of the update of the entity.
         data_type: TIMESTAMP_TZ
         tests:
           - not_null
       - name: INDICATOR_DESCRIPTION
+        description: "Indicator description."
         data_type: TEXT
       - name: SOURCE_REFERENCE
+        description: "Source of data (BCRA, Criptoya, Yahoo Finance)"
         data_type: TEXT
       - name: AVG_TOTAL_ASK_PRICE
+        description: "Average of the final purchase price including transfer and trade
+          fees."
         data_type: FLOAT
+      - name: AVG_TOTAL_BID_PRICE
+        data_type: FLOAT
+        description: Average of the final sale price including transfer and trade fees
     tests:
       - dbt_utils.recency:
           datepart: minute
