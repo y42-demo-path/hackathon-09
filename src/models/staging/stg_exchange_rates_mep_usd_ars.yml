@@ -13,15 +13,24 @@ models:
       - name: EXCHANGE_RATE_NAME
         description: "Names of the exchange rates."
         data_type: TEXT
+        tests:
+          - not_null
+          - unique
       - name: INDICATOR_DESCRIPTION
         description: "Indicator description."
         data_type: TEXT
+        tests:
+          - not_null
       - name: SOURCE_REFERENCE
         description: "Source of data (BCRA, Criptoya, Yahoo Finance)"
         data_type: TEXT
+        tests:
+          - not_null
       - name: UPDATED_AT
         description: "Timestamp of the update of the entity."
         data_type: TIMESTAMP_TZ
+        tests:
+          - not_null
       - name: TOTAL_BID_PRICE
         data_type: FLOAT
         description: Final sale price including transfer and trade fees.

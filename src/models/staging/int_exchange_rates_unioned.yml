@@ -15,12 +15,18 @@ models:
       - name: EXCHANGE_RATE_NAME
         description: "Names of the exchange rates."
         data_type: TEXT
+        tests:
+          - not_null
       - name: INDICATOR_DESCRIPTION
         description: "Indicator description."
         data_type: TEXT
+        tests:
+          - not_null
       - name: SOURCE_REFERENCE
         description: "Source of data (BCRA, Criptoya, Yahoo Finance)"
         data_type: TEXT
+        tests:
+          - not_null
       - name: BID_PRICE
         description: "Sale price reported by the exchange, excluding fees."
         data_type: FLOAT
@@ -40,21 +46,33 @@ models:
       - name: UPDATED_AT
         description: "Timestamp of the update of the entity."
         data_type: TIMESTAMP_NTZ
+        tests:
+          - not_null
       - name: PROCESSED_AT
         description: "Timestamp when the entity was processed."
         data_type: TIMESTAMP_TZ
+        tests:
+          - not_null
       - name: EXCHANGE_RATE_TOKEN
         data_type: TEXT
         description: Unique token of the entity.
+        tests:
+          - not_null
       - name: AVG_TOTAL_BID_PRICE
         data_type: FLOAT
         description: Final sale price including transfer and trade fees (Average).
       - name: OFFICIAL_RETAILER_DOLLAR
         data_type: FLOAT
         description: Official retailer exchange rate.
+        tests:
+          - not_null
       - name: OFFICIAL_WHOLESALE_DOLLAR
         data_type: FLOAT
         description: Official wholesale exchange rate.
+        tests:
+          - not_null
       - name: AVG_MEP_DOLLAR
         data_type: FLOAT
         description: Average of the MEP exchange rate.
+        tests:
+          - not_null
