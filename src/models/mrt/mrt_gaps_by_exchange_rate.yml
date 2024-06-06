@@ -2,6 +2,11 @@ version: 2
 
 models:
   - name: mrt_gaps_by_exchange_rate
+    tests:
+      - dbt_utils.unique_combination_of_columns:
+            combination_of_columns:
+              - EXCHANGE_RATE_NAME
+              - PROCESSED_AT
     meta:
       experts:
         users:
@@ -99,3 +104,4 @@ models:
         data_type: FLOAT
       - name: IS_HIGH_CHANGE_GAP_OVER_MEP_EXCHANGE_RATE
         data_type: BOOLEAN
+    description: Mart with all the metrics we need to send alerts to Slack later.
