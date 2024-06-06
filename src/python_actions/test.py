@@ -1,7 +1,6 @@
 import json
 import pandas as pd
 from tabulate import tabulate
-import plotext as plt
 
 import requests
 
@@ -27,7 +26,7 @@ def business_alert(context,assets):
     
     most_recent_data = gaps[
         (gaps['PROCESSED_AT'] == most_recent_date) & 
-        (gaps['EXCHANGE_RATE_NAME'] != 'Tourist Dollar')
+        (~gaps['EXCHANGE_RATE_NAME'].isin(['Tourist Dollar', 'Saving Dollar']))
     ]
     
     df_filtered = most_recent_data[(most_recent_data['IS_TOP_CRIPTO_EXCHANGES']) | 
@@ -39,18 +38,21 @@ def business_alert(context,assets):
     result['CHANGE_TOTAL_BID_PRICE'] = round(result['CHANGE_TOTAL_BID_PRICE'] * 100, 2)
     result = result.sort_values(by='TOTAL_BID_PRICE', ascending = False)
     result = result.reset_index(drop=True)
+    result = result.rename(
+        columns={
+            'EXCHANGE_RATE_NAME': 'Exchange Rate Name', 
+            'TOTAL_BID_PRICE': 'Bid price', 
+            'CHANGE_TOTAL_BID_PRICE': '% Bid price'
+        }
+    )
     
-    # Generar el gráfico de texto con plotext
-    plt.clear_data()
-    plt.bar(result['EXCHANGE_RATE_NAME'], result['TOTAL_BID_PRICE'])
-    plt.title("Total Bid Price by Exchange Rate Name")
-    plt.xlabel("Exchange Rate Name")
-    plt.ylabel("Total Bid Price")
-    
-    # Capturar el gráfico en una cadena
-    plot_text = plt.build()
+    body = tabulate(result, headers='keys', tablefmt='orgtbl')
+  
+    logging.info(body)
 
-    logging.info(plot_text)
+    response = requests.post(webhook_url, json={"body": body}, headers=headers)
+    
+    # Log the response status code and headers for debugging purposes.
     
 
     
