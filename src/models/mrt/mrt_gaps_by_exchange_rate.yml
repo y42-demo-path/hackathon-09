@@ -11,10 +11,10 @@ models:
         apiVersion: v1
     columns:
       - name: EXCHANGE_RATE_TOKEN
-        description: ""
+        description: "Unique token of the entity.""
         data_type: TEXT
       - name: EXCHANGE_RATE_NAME
-        description: ""
+        description: "Names of the exchange rates."
         data_type: TEXT
       - name: INDICATOR_DESCRIPTION
         description: ""
