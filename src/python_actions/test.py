@@ -15,7 +15,7 @@ import logging
 def business_alert(context,assets):
     # Define the Slack webhook URL to which the notification will be sent.
     webhook_url = context.secrets.get("slack_webhook_url")
-    headers={'Content-Type': 'application/json'}
+    headers={'Content-Type': 'application/plain'}
     
     # Reference the 'mrt_gaps_by_exchange_rate' dataset from Y42 assets.
     gaps = assets.ref('mrt_gaps_by_exchange_rate')
