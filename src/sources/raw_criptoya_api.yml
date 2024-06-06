@@ -72,12 +72,28 @@ sources:
         columns:
           - name: variation
             data_type: FLOAT
+            description: Daily percentage variation of the purchase price.
           - name: timestamp
             data_type: FLOAT
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+            description: Timestamp of the update of the entity.
           - name: price
             data_type: FLOAT
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+            description: Last traded price.
           - name: index
             data_type: TEXT
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
+            description: Unique ID of the entity.
     description: >-
       The following data will be pulled from the Criptoya API:
 
