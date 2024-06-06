@@ -11,12 +11,12 @@ models:
         apiVersion: v1
     columns:
       - name: INDICATOR_DESCRIPTION
-        description: "Indicator description."
+        description: "Description of the indicator."
         data_type: TEXT
         tests:
           - not_null
       - name: UPDATED_AT
-        description: "Timestamp of the update of the entity."
+        description: "Timestamp when the data was last updated."
         data_type: TIMESTAMP_NTZ
         tests:
           - not_null

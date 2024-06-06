@@ -18,7 +18,7 @@ models:
         tests:
           - not_null
       - name: INDICATOR_DESCRIPTION
-        description: "Indicator description."
+        description: "Description of the indicator."
         data_type: TEXT
         tests:
           - not_null
@@ -44,7 +44,7 @@ models:
           fees."
         data_type: FLOAT
       - name: UPDATED_AT
-        description: "Timestamp of the update of the entity."
+        description: "Timestamp when the data was last updated."
         data_type: TIMESTAMP_NTZ
         tests:
           - not_null
@@ -60,7 +60,7 @@ models:
           - not_null
       - name: AVG_TOTAL_BID_PRICE
         data_type: FLOAT
-        description: Final sale price including transfer and trade fees (Average).
+        description: Average of the final sale price including transfer and trade fees.
       - name: OFFICIAL_RETAILER_DOLLAR
         data_type: FLOAT
         description: Official retailer exchange rate.

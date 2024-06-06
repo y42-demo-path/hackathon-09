@@ -18,7 +18,7 @@ models:
         description: Names of the exchange rates.
       - name: INDICATOR_DESCRIPTION
         data_type: TEXT
-        description: Indicator description.
+        description: Description of the indicator.
         tests:
           - not_null
       - name: SOURCE_REFERENCE
@@ -40,6 +40,6 @@ models:
         description: Average of the final purchase price including transfer and trade fees
       - name: UPDATED_AT
         data_type: TIMESTAMP_TZ
-        description: Timestamp of the update of the entity.
+        description: Timestamp when the data was last updated.
         tests:
           - not_null
