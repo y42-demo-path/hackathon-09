@@ -46,8 +46,13 @@ def business_alert(context,assets):
         }
     )
     
-    body = tabulate(result, headers='keys', tablefmt='orgtbl')
-  
+    table_format = tabulate(result, headers='keys', tablefmt='github')
+    
+    body = f"""Today's dollar exchange rates:
+
+    {table_format}
+    """
+
     logging.info(body)
 
     response = requests.post(webhook_url, json={"body": body}, headers=headers)
