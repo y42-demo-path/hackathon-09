@@ -16,11 +16,21 @@ sources:
       - name: raw_exchange_rates_ccl_usd_ars
         columns:
           - name: DATETIME
-            description: ""
+            description: "Timestamp of the update of the entity."
             data_type: NUMBER
+            tests:
+              - not_null:
+                  config:
+                    severity: warn
           - name: GGAL
             data_type: FLOAT
+            description: CCL Exchange Rate for Banco Galicia.
           - name: YPF
             data_type: FLOAT
+            description: CCL Exchange Rate for YPF.
           - name: PAMP
             data_type: FLOAT
+            description: CCL Exchange Rate for PAMP.
+        meta:
+          asset_status: verified
+        description: Python source to obtain data of the CCL dollar from Yahho Finance API.

@@ -33,7 +33,7 @@ with int_unioned_model as (
 
 ),
 
-gaps as (
+gaps_metrics as (
 
     select
 
@@ -103,7 +103,7 @@ gaps as (
 
 ),
 
-changes as (
+change_metrics as (
 
     select
 
@@ -122,8 +122,51 @@ changes as (
         {% endfor %}
 
 
-    from gaps
+    from gaps_metrics
+
+),
+
+final as (
+
+    select 
+
+        exchange_rate_token,
+        exchange_rate_name,
+        indicator_description,
+        source_reference,
+        bid_price,
+        ask_price,
+        total_bid_price,
+        total_ask_price,
+        avg_total_bid_price,
+        avg_total_ask_price,
+        max_total_bid_price,
+        min_total_ask_price,
+        official_retailer_dollar,
+        official_wholesale_dollar,
+        avg_mep_dollar,
+        total_bid_price_lagged,
+        gap_over_official_retailer_exchange_rate,
+        gap_over_official_wholesale_exchange_rate,
+        gap_over_mep_exchange_rate,
+        gap_over_mep_exchange_rate_lagged,
+        gap_over_official_wholesale_exchange_rate_lagged,
+        change_total_bid_price,
+        change_gap_over_official_wholesale_exchange_rate,
+        change_gap_over_mep_exchange_rate,
+        arbitrage_ratio,
+        is_top_cripto_exchanges,
+        is_high_mep_gap,
+        is_arbitrage_opportunity,
+        is_high_official_gap,
+        is_high_change_total_bid_price,
+        is_high_change_gap_over_official_wholesale_exchange_rate,
+        is_high_change_gap_over_mep_exchange_rate,
+        updated_at,
+        processed_at
+
+    from change_metrics
 
 )
 
-select * from changes
+select * from final

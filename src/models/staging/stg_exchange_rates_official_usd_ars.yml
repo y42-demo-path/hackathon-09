@@ -6,41 +6,38 @@ models:
       experts:
         users:
           - darb302@gmail.com
+      asset_status: verified
     config:
       y42:
         apiVersion: v1
     columns:
       - name: INDICATOR_DESCRIPTION
-        description: ""
+        description: "Description of the indicator."
         data_type: TEXT
         tests:
-          - not_null:
-              config:
-                severity: warn
-                store_failures: true
-                schema: tests_failures
-      - name: TOTAL_ASK_PRICE
-        description: ""
-        data_type: FLOAT
-        tests: []
-      - name: AVG_TOTAL_ASK_PRICE
-        description: ""
-        data_type: FLOAT
-        tests: []
+          - not_null
       - name: UPDATED_AT
-        description: ""
+        description: "Timestamp when the data was last updated."
         data_type: TIMESTAMP_NTZ
         tests:
-          - not_null:
-              config:
-                severity: warn
+          - not_null
       - name: SOURCE_REFERENCE
-        description: ""
+        description: "Source of data (BCRA, Criptoya, Yahoo Finance)"
         data_type: TEXT
         tests:
           - not_null
       - name: EXCHANGE_RATE_NAME
+        description: "Names of the exchange rates."
         data_type: TEXT
+        tests:
+          - not_null
+          - unique
+      - name: TOTAL_BID_PRICE
+        data_type: FLOAT
+        description: Final sale price including transfer and trade fees.
+      - name: AVG_TOTAL_BID_PRICE
+        data_type: FLOAT
+        description: Average of the final sale price including transfer and trade fees.
     tests:
       - dbt_utils.recency:
           datepart: day
@@ -50,5 +47,6 @@ models:
             severity: warn
             store_failures: true
             schema: tests_failures
-    description: Wholesale and Retail Exchange Rates of the Central Bank of
-      Argentina (BCRA).
+    description: Stage with the necessary transformations to have the official
+      exchange rates - Wholesale and Retail Exchange Rates of the Central Bank
+      of Argentina (BCRA).

@@ -18,3 +18,5 @@ exposures:
       experts:
         users:
           - darb302@gmail.com
+      asset_status: verified
+      tier: tier 1
