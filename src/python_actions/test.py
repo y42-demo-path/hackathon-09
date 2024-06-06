@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 from tabulate import tabulate
+import plotext as plt
 
 import requests
 
@@ -39,13 +40,17 @@ def business_alert(context,assets):
     result = result.sort_values(by='TOTAL_BID_PRICE', ascending = False)
     result = result.reset_index(drop=True)
     
-    body = tabulate(result, headers = 'keys', tablefmt = 'psql')
+    # Generar el gráfico de texto con plotext
+    plt.clear_data()
+    plt.bar(result['EXCHANGE_RATE_NAME'], result['TOTAL_BID_PRICE'])
+    plt.title("Total Bid Price by Exchange Rate Name")
+    plt.xlabel("Exchange Rate Name")
+    plt.ylabel("Total Bid Price")
     
-    logging.info(body)
+    # Capturar el gráfico en una cadena
+    plot_text = plt.build()
 
-    response = requests.post(webhook_url, json={"body": body}, headers=headers)
-    
-    # Log the response status code and headers for debugging purposes.
+    logging.info(plot_text)
     
 
     
