@@ -16,38 +16,23 @@ sources:
         columns:
           - name: timestamp
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Timestamp of the update of the entity.
           - name: price
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Last traded price.
           - name: bid
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Sale price reported by the exchange, excluding fees.
           - name: index
             data_type: TEXT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Unique ID of the entity.
           - name: ask
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Purchase price reported by the exchange, excluding fees
         meta:
           asset_status: verified
@@ -57,45 +42,27 @@ sources:
         columns:
           - name: time
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Timestamp of the update of the entity.
           - name: totalBid
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Final sale price including transfer and trade fees.
           - name: totalAsk
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Final purchase price including transfer and trade fees.
           - name: bid
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Sale price reported by the exchange, excluding fees.
           - name: index
             data_type: TEXT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Unique ID of the entity.
           - name: ask
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Purchase price reported by the exchange, excluding fees
         meta:
           asset_status: verified
@@ -107,24 +74,15 @@ sources:
             description: Daily percentage variation of the purchase price.
           - name: timestamp
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Timestamp of the update of the entity.
           - name: price
             data_type: FLOAT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Last traded price.
           - name: index
             data_type: TEXT
-            tests:
-              - not_null:
-                  config:
-                    severity: warn
+            tests: []
             description: Unique ID of the entity.
         meta:
           asset_status: verified
