@@ -1,5 +1,6 @@
 import json
 import pandas as pd
+from tabulate import tabulate
 
 import requests
 
@@ -33,15 +34,18 @@ def business_alert(context,assets):
 
 
     result = df_filtered[['EXCHANGE_RATE_NAME', 'TOTAL_BID_PRICE', 'CHANGE_TOTAL_BID_PRICE']]
-    result['CHANGE_TOTAL_BID_PRICE'] = (result['CHANGE_TOTAL_BID_PRICE'] * 100).round(2)
-
-    result = result.sort_values(by='SOURCE_REFERENCE')
-        
-    body = result.to_html()
+    result['TOTAL_BID_PRICE'] = round(result['TOTAL_BID_PRICE'], 2)
+    result['CHANGE_TOTAL_BID_PRICE'] = round(result['CHANGE_TOTAL_BID_PRICE'] * 100, 2)
+    result = result.sort_values(by='TOTAL_BID_PRICE', ascending = False)
+    result = result.reset_index(drop=True)
     
-    #response = requests.post(webhook_url, json={"body": body}, headers=headers)
+    body = tabulate(result, headers = 'keys', tablefmt = 'psql')
+    
+    logging.info(body)
+
+    response = requests.post(webhook_url, json={"body": body}, headers=headers)
     
     # Log the response status code and headers for debugging purposes.
-    logging.info(body)
+    
 
     
