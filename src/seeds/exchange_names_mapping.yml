@@ -11,8 +11,10 @@ seeds:
         tests:
           - unique
           - not_null
+        description: Original Exchange Name from the Criptoya API.
       - name: EXCHANGE_NAME_NEW
         data_type: TEXT
         tests:
           - not_null
           - unique
+        description: Name of the Exchange renamed from the Cryptoya API.
