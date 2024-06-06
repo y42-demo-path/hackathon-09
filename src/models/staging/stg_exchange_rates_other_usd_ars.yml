@@ -6,6 +6,7 @@ models:
       experts:
         users:
           - darb302@gmail.com
+      asset_status: verified
     config:
       y42:
         apiVersion: v1
@@ -43,3 +44,5 @@ models:
         description: Timestamp when the data was last updated.
         tests:
           - not_null
+    description: Stage with the necessary transformations to have others exchange
+      rates - Saving dollar, Tourist Dollar, Blue dollar.

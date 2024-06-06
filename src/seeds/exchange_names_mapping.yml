@@ -18,3 +18,5 @@ seeds:
           - not_null
           - unique
         description: Name of the Exchange renamed from the Cryptoya API.
+    meta:
+      asset_status: verified

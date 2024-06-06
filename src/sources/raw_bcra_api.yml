@@ -34,5 +34,9 @@ sources:
           - name: cdSerie
             description: "The unique identifier for a specific data series."
             data_type: NUMBER
+        meta:
+          asset_status: verified
+        description: Python source to obtain data of the main economic variables from
+          BCRA API.
     description: "Wholesale and Retail Exchange Rates of the Central Bank of
       Argentina (Official Rates). Data pulled from BCRA API."
