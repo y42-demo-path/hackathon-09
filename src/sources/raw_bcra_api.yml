@@ -18,21 +18,21 @@ sources:
       - name: raw_exchange_rates_official_usd_ars
         columns:
           - name: descripcion
-            description: ""
+            description: "Indicator description in English."
             data_type: TEXT
           - name: idVariable
-            description: ""
+            description: "Unique ID for the indicator."
             data_type: NUMBER
             tests: []
           - name: valor
-            description: ""
+            description: "Value of the indicator to date."
             data_type: FLOAT
             tests: []
           - name: fecha
-            description: ""
+            description: "Timestamp of the update of the entity"
             data_type: TEXT
           - name: cdSerie
-            description: ""
+            description: "The unique identifier for a specific data series."
             data_type: NUMBER
     description: "Wholesale and Retail Exchange Rates of the Central Bank of
       Argentina (Official Rates). Data pulled from BCRA API."
