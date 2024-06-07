@@ -1,0 +1,20 @@
+version: 2
+
+exposures:
+  - name: retl_google_sheet
+    depends_on:
+      - ref('mrt_gaps_by_exchange_rate')
+    owner:
+      name: Rob de Wit
+      email: rob.dewit@y42.com
+    type: application
+    config:
+      y42_exposure:
+        type: python-action
+        function_size: S
+      y42:
+        apiVersion: v1
+    meta:
+      experts:
+        users:
+          - rob.dewit@y42.com
