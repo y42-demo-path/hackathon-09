@@ -81,6 +81,11 @@ transformations as (
             ignore nulls) over(order by updated_at)
                 as avg_mep_dollar,
 
+            last_value(
+                case when exchange_rate_name = 'Black Market Dollar' then total_ask_price end
+            ignore nulls) over(order by updated_at)
+                as black_market_dollar,
+
         convert_timezone(
             'America/Argentina/Buenos_Aires',
             current_timestamp
@@ -112,6 +117,7 @@ final as (
 		avg_total_ask_price,
 		official_retailer_dollar,
 		official_wholesale_dollar,
+        black_market_dollar,
 		avg_mep_dollar,
 		updated_at,
 		processed_at

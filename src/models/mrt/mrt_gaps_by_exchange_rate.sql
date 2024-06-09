@@ -1,4 +1,5 @@
 {% set gap_over_mep_threshold = 0.03 %}
+{% set gap_over_black_market_threshold = 0.02 %}
 {% set gap_over_official_threshold = 0.45 %}
 {% set arbitrage_threshold = 0.01 %}
 
@@ -55,6 +56,10 @@ gaps_metrics as (
             'total_bid_price', 'avg_mep_dollar'
         ) }} -1 as gap_over_mep_exchange_rate,
 
+        {{ dbt_utils.safe_divide(
+            'total_bid_price', 'black_market_dollar'
+        ) }} -1 as gap_over_black_market_exchange_rate,
+
         max(
             iff(
                 source_reference = 'Criptoya - Cripto'
@@ -87,6 +92,8 @@ gaps_metrics as (
             as is_high_official_gap,
         gap_over_mep_exchange_rate > {{ gap_over_mep_threshold }}
             as is_high_mep_gap
+        gap_over_black_market_exchange_rate > {{ gap_over_black_market_threshold }}
+            as is_high_black_market_gap 
 
         {% for metrics in metrics_threshold %}
 
@@ -140,25 +147,22 @@ final as (
         total_ask_price,
         avg_total_bid_price,
         avg_total_ask_price,
-        max_total_bid_price,
-        min_total_ask_price,
         official_retailer_dollar,
         official_wholesale_dollar,
         avg_mep_dollar,
-        total_bid_price_lagged,
         gap_over_official_retailer_exchange_rate,
         gap_over_official_wholesale_exchange_rate,
         gap_over_mep_exchange_rate,
-        gap_over_mep_exchange_rate_lagged,
-        gap_over_official_wholesale_exchange_rate_lagged,
+        gap_over_black_market_exchange_rate,
         change_total_bid_price,
         change_gap_over_official_wholesale_exchange_rate,
         change_gap_over_mep_exchange_rate,
         arbitrage_ratio,
         is_top_cripto_exchanges,
         is_high_mep_gap,
-        is_arbitrage_opportunity,
         is_high_official_gap,
+        is_high_black_market_gap,
+        is_arbitrage_opportunity,
         is_high_change_total_bid_price,
         is_high_change_gap_over_official_wholesale_exchange_rate,
         is_high_change_gap_over_mep_exchange_rate,
