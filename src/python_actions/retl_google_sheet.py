@@ -19,14 +19,14 @@ def retl_mart_gsheet(context, assets):
     
     # load credentials & authorize
     SCOPES = ('https://www.googleapis.com/auth/spreadsheets', 'https://www.googleapis.com/auth/drive')
-    service_account_info = json.loads(context.secrets.get('INCLUDE_SERVICE_ACCOUNT_HERE'))
+    service_account_info = json.loads(context.secrets.get(service_account_info))
     my_credentials = service_account.Credentials.from_service_account_info(service_account_info, scopes=SCOPES)
 
     client = gspread.authorize(my_credentials)
     logging.info('authorized')
 
     # connect to sheet by ID and sync data
-    sht1 = client.open_by_key('INCLUDE SHEET ID HERE')
+    sht1 = client.open_by_key('1p8Rajxx5f490urjZGIUR0qbkI6bJHom-z3JVObqyUcI')
     worksheet = sht1.get_worksheet(0)
     logging.info('connected to sheet')
     data = [df.columns.to_numpy().tolist()] + df.to_numpy().tolist() # this works when all columns are of type string
