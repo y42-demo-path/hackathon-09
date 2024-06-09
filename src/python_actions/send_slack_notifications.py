@@ -1,7 +1,7 @@
 import json
 import pandas as pd
-
 import requests
+from tabulate import tabulate
 
 from y42.v1.decorators import data_action
 import logging
@@ -25,9 +25,44 @@ def business_alert(context,assets):
     
     most_recent_data = gaps[
         (gaps['PROCESSED_AT'] == most_recent_date) & 
-        (gaps['EXCHANGE_RATE_NAME'] != 'Tourist Dollar')
+        (~gaps['EXCHANGE_RATE_NAME'].isin(['Tourist Dollar', 'Saving Dollar']))
     ]
     
+    filtered_data = most_recent_data[(most_recent_data['IS_TOP_CRIPTO_EXCHANGES']) | 
+                                (~most_recent_data['SOURCE_REFERENCE'].isin(['Criptoya - Cripto']))]
+
+
+    general_exchange_report = filtered_data[['EXCHANGE_RATE_NAME', 'TOTAL_BID_PRICE', 'CHANGE_TOTAL_BID_PRICE']]
+    general_exchange_report['TOTAL_BID_PRICE'] = round(general_exchange_report['TOTAL_BID_PRICE'], 2)
+    general_exchange_report['CHANGE_TOTAL_BID_PRICE'] = round(general_exchange_report['CHANGE_TOTAL_BID_PRICE'] * 100, 2)
+    general_exchange_report = general_exchange_report.sort_values(by='TOTAL_BID_PRICE', ascending = False)
+    general_exchange_report = general_exchange_report.rename(
+        columns={
+            'EXCHANGE_RATE_NAME': 'Exchange Rate Name', 
+            'TOTAL_BID_PRICE': 'Bid price', 
+            'CHANGE_TOTAL_BID_PRICE': '% Bid price'
+        }
+    )
+    general_exchange_report = general_exchange_report.set_index('Exchange Rate Name')
+    
+    table_format = tabulate(
+        general_exchange_report, 
+        headers='keys', 
+        tablefmt='pretty', 
+        colalign=("left","center", "center"), 
+        numalign="center",
+        floatfmt=".2f"
+    )
+    
+    body = f"""Today's dollar exchange rates:
+
+    {table_format}
+    """
+
+    response = requests.post(webhook_url, json={"body": body}, headers=headers)
+    logging.info(response.status_code)
+    logging.info(response.headers)
+
     high_official_gap = most_recent_data[most_recent_data['IS_HIGH_OFFICIAL_GAP']]
     high_official_mep = most_recent_data[most_recent_data['IS_HIGH_MEP_GAP']]
     
@@ -109,7 +144,10 @@ def business_alert(context,assets):
             current_value = round(j['TOTAL_BID_PRICE'], 2)
             previous_value = round(j['TOTAL_BID_PRICE_LAGGED'], 2)
 
-            body = f"{exchange_name} --> The price of the dollar (bid) has risen {increase_percentage}% (from ${previous_value} to ${current_value}) in the last 30 minutes."
+            body = (
+                f"{exchange_name} --> The price of the dollar (bid) has risen {increase_percentage}% "
+                f"(from ${previous_value} to ${current_value}) in the last 30 minutes."
+            )
 
             response = requests.post(webhook_url, json={"body": body}, headers=headers)
             
