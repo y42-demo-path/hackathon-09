@@ -77,8 +77,6 @@ def business_alert(context,assets):
     
     change_bid_price = most_recent_data[most_recent_data['IS_HIGH_CHANGE_TOTAL_BID_PRICE'] == True]
         
-
-    # Check if there are any high revenue items. If so, proceed with the notification.
     if not high_official_gap.empty:
         # Send a POST request to the Slack webhook URL with the message payload.
 
