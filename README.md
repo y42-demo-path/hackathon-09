@@ -71,3 +71,5 @@ I created tests to ensure that IDs are unique and do not contain null values, as
 -   [Differences between MEP and CCL](https://finco.com.ar/productos/dolar-mep-y-ccl/)
 -   [Send Slack Notifications](https://www.y42.com/docs/python-actions/send-slack-notifications)
 -   [dbt utils](https://github.com/dbt-labs/dbt-utils)
+- [Notifications Alert Channel](https://exchangeraten-lky6868.slack.com/archives/C0768D5U9K3)
+- [Google Sheet Link](https://docs.google.com/spreadsheets/d/1p8Rajxx5f490urjZGIUR0qbkI6bJHom-z3JVObqyUcI/edit?gid=0#gid=0)
