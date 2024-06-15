@@ -1,12 +1,12 @@
 # 💸 Monitoring Parallel Market Exchange Rate in Argentina 
 ## Introduction
 
-The goal of this project was to monitor the premium among several exchange rates in Argentina in near real-time. Tracking the differences between the official exchange rate and the free market dollars was crucial because it reflected devaluation expectations. As economic agents made anticipatory decisions, any significant deviation impacted other economic variables, such as inflation.
+The goal of this project was to monitor the premium among several exchange rates in Argentina in near real-time. Tracking the differences between the official exchange rate and the free market dollars was crucial because it reflected devaluation expectations. As economic agents made anticipatory decisions, any significant deviation impacted other economic variables, such as inflation. It is important to mention that the foreign exchange market remains controlled despite the new government, and the regulations and restrictions remain quite similar to those of the previous government.
 
 To achieve this, exchange rate data was extracted from several APIs (**BCRA, Criptoya, Yahoo Finance**) using Python ingestors available on Y42. The necessary transformations (stage models) were then performed, and a final model (mart) was created where all the required metrics were stored. Subsequently, customized alerts were sent to **Slack** via webhook. The pipeline ran every 30 minutes during Argentina's operating hours (from 11 AM to 6 PM). Additionally, the mart model data was sent to a Google Sheet for visualization purposes.
 
 ## ⚙️ Data Pipeline
-This was the pipeline that was implemented. The `raw` models performed the data ingestion, the stage (`stg_`) models handled necessary transformations such as renaming, filtering, pivoting, and adding new columns. The intermediate (`int_`) model joined the stage models to obtain all exchange rates in a single model, and the mrt model calculated the metrics. Finally, the Python actions sent alerts to **Slack** and **Google Sheet**.
+This was the pipeline that was implemented. The `raw` models performed the data ingestion, the stage (`stg_`) models handled necessary transformations such as renaming, filtering, pivoting, and adding new columns. The intermediate (`int_`) model joined the stage models to obtain all exchange rates in a single model, and the `mrt` model calculated the metrics. Finally, the Python actions sent alerts to **Slack** and **Google Sheet**.
 
 ![dag](https://github.com/y42-demo-path/hackathon-09/assets/67651418/2632781b-a757-4a41-a95f-f0370c5082d4)
 
@@ -19,8 +19,8 @@ For all sources, we use the Python Source to fetch data from the API using a Pyt
 
 - **raw_bcra_api**: The official exchange rates (wholesale and retailer) were extracted using the Central Bank of Argentina's [API](https://www.bcra.gob.ar/BCRAyVos/catalogo-de-APIs-banco-central.asp).
 - **raw_criptoya_api**: This [API](https://criptoya.com/api) provided the crypto dollar (USDT), MEP (Electronic Payment Market), savings dollar, tourist dollar, and blue dollar (or black market). Two different endpoints were used:
-- **Cryptocurrency query** (`/api/{coin}/{fiat}/{volume}`): The **USDT/ARS**pair for all existing exchanges in Argentina (around 30) was obtained here.
-- **Other dollars** (`/api/dolar`): The rest of the exchange rates were obtained here. The MEP had a more complex structure, so it was extracted in a different model.
+  - **Cryptocurrency query** (`/api/{coin}/{fiat}/{volume}`): The **USDT/ARS** pair for all existing exchanges in Argentina (around 30) was obtained here.
+  - **Other dollars** (`/api/dolar`): The rest of the exchange rates were obtained here. The MEP had a more complex structure, so it was extracted in a different model.
 - **raw_yahoofinance_api**: The CCL (Dólar Contado con Liquidación) exchange rate was obtained using the **Yahoo Finance** library. Data for calculating the CCL was fetched from **Banco Galicia, PAMPA, and YPF**.
 
 > It is important to note that these APIs provide the latest available information for each exchange rate, not historical price data.
@@ -29,7 +29,7 @@ For all sources, we use the Python Source to fetch data from the API using a Pyt
 
 Several stage models handle data transformations from the source. Below is an explanation of each:
 
-- **stg_exchange_rates_ccl_usd_ars**: Since CCL calculations came from columns, an unpivot using the dbt macro was performed to convert them to rows. New fields were added and others were casted.
+- **stg_exchange_rates_ccl_usd_ars**: Since CCL calculations come from columns, an unpivot using the dbt macro was performed to convert them to rows. New fields were added and others were casted.
 - **stg_exchange_rates_cripto_usdt_ars**: The names of the exchanges were mapped to appropriate names using a new macro called `map_values_from_seed`. As in the previous case, new fields and some averages for bid and ask prices were added.
 - **stg_exchange_rates_mep_usd_ars**: Renames were done, and new average fields were added.
 - **stg_exchange_rates_official_usd_ars**: Only the indicators needed were filtered, renamed, and new fields were added. The API provided other economic indicators as well.
@@ -49,7 +49,7 @@ Several stage models handle data transformations from the source. Below is an ex
 
 #### 🚨Actions
 
--   **send_slack_notifications**: A connection to send all the custom alerts to be monitored was set up. For example, an alert was received when the gap with the official exchange rate exceeded **45%**, or when there was a price increase greater than **1%** from the last run. Additionally, notifications were received when there was an arbitrage opportunity for the **USDT/ARS** pair among crypto exchanges. Finally, a summary table of the main rates was sent to the channel.
+-   **send_slack_notifications**: A connection to send all the custom alerts to be monitored is set up. For example, an alert is received when the gap with the official exchange rate exceeds **45%**, or when there is a price increase greater than **1%** from the last run. Additionally, notifications are received when there is an arbitrage opportunity for the **USDT/ARS** pair among crypto exchanges. Finally, a summary table of the main rates is sent to the channel.
 
 ![slack 1](https://github.com/y42-demo-path/hackathon-09/assets/67651418/13f28933-5d3d-406e-9128-c4c3422d8433)
 
