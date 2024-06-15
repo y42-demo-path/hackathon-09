@@ -61,3 +61,13 @@ Several stage models handle data transformations from the source. Below is an ex
 #### 📑 Quality Testing and Descriptions
 
 I created tests to ensure that IDs are unique and do not contain null values, as well as tests for other important fields. Recency tests were also placed on the main models to verify that the ingested information is the latest available. Additionally, all models and their columns were documented.
+
+#### 🖹 Documentation
+
+-   [Python Sources](https://www.y42.com/docs/python-sources)
+-   [BCRA's API](https://www.bcra.gob.ar/BCRAyVos/catalogo-de-APIs-banco-central-i.asp)
+-   [Criptoya's API](https://criptoya.com/api)
+-   [Yahoo Finance library](https://pypi.org/project/yfinance/)
+-   [Differences between MEP and CCL](https://finco.com.ar/productos/dolar-mep-y-ccl/)
+-   [Send Slack Notifications](https://www.y42.com/docs/python-actions/send-slack-notifications)
+-   [dbt utils](https://github.com/dbt-labs/dbt-utils)
