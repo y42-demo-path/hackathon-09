@@ -1,7 +1,7 @@
 # 💸 Monitoring Parallel Market Exchange Rate in Argentina 
 ## Introduction
 
-The goal of this project was to monitor the premium among several exchange rates in Argentina in near real-time. Tracking the differences between the official exchange rate and the free market dollars is crucial because it reflects devaluation expectations. As economic agents make anticipatory decisions, any significant deviation can impact other economic variables, such as inflation. It is important to mention that the foreign exchange market remains controlled despite the new government, and the regulations and restrictions remain quite similar to those of the previous government.
+The goal of this project was to monitor the premium among several exchange rates in Argentina in near real-time. Tracking the differences amoung the official exchange rate and the free market dollars is crucial because it reflects devaluation expectations. As economic agents make anticipatory decisions, any significant deviation can impact other economic variables, such as inflation. It is important to mention that the foreign exchange market remains controlled despite the new government, and the regulations and restrictions remain quite similar to those of the previous government.
 
 To achieve this, exchange rate data was extracted from several APIs (**BCRA, Criptoya, Yahoo Finance**) using Python ingestors available on Y42. The necessary transformations (stage models) were then performed, and a final model (mart) was created where all the required metrics were stored. Subsequently, customized alerts were sent to **Slack** via webhook. The pipeline ran every 30 minutes during Argentina's operating hours (from 11 AM to 6 PM). Additionally, the mart model data was sent to a Google Sheet for visualization purposes.
 
@@ -38,7 +38,7 @@ Several stage models handle data transformations from the source. Below is an ex
 
 #### 📊 Analytics
 
--   **mrt_gaps_by_exchange_rate**: In this model, all the metrics of interest for sending alerts to Slack were created. Metrics measuring the gap between all exchange rates and official dollars (retailer and wholesale), MEP, Blue, etc., were created, along with boolean variables to check if the gaps exceeded certain thresholds. Additionally, price variations from the last available value were added to detect abrupt price changes. Metrics to capture arbitrage opportunities were also included.
+-   **mrt_gaps_by_exchange_rate**: In this model, all the metrics of interest for sending alerts to Slack were created. Metrics measuring the gap amoung all exchange rates and official dollars (retailer and wholesale), MEP, Blue, etc., were created, along with boolean variables to check if the gaps exceeded certain thresholds. Additionally, price variations from the last available value were added to detect abrupt price changes. Metrics to capture arbitrage opportunities were also included.
 
 > 💡 **dbt macros used:** 
 >  - `dbt_utils.unpivot`
