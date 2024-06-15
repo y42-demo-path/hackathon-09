@@ -20,3 +20,4 @@ seeds:
         description: Name of the Exchange renamed from the Cryptoya API.
     meta:
       asset_status: verified
+    description: Mapping exchange names from Criptoya.
