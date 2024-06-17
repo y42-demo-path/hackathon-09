@@ -19,7 +19,7 @@ models:
         apiVersion: v1
     columns:
       - name: EXCHANGE_RATE_TOKEN
-        description: "Unique token of the entity."
+        description: '{{ doc("EXCHANGE_RATE_TOKEN") }}'
         data_type: TEXT
         tests:
           - not_null
