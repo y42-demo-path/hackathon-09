@@ -43,7 +43,6 @@ Several stage models handle data transformations from the source. Below is an ex
 > 💡 **dbt macros used:** 
 >  - `dbt_utils.unpivot`
 >  - `dbt_utils.get_column_values`
->  -  `dbt_utils.get_column_values`
 >  - `dbt_utils.generate_surrogate_key`
 >  - `dbt_utils.safe_divide`
 
