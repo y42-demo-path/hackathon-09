@@ -17,7 +17,7 @@
     'Satoshitango',
     'Decrypto',
     'Letsbit',
-    'Binance P2P',
+    'Binance',
     'Fiwind',
     'Lemon Cash',
     'Belo',
@@ -40,6 +40,8 @@ gaps_metrics as (
         *,
 
         exchange_rate_name in {{ top_cripto_exchanges }} as is_top_cripto_exchanges,
+
+        exchange_rate_name like '%P2P%' as is_p2p_exchange,
 
         {{ dbt_utils.safe_divide(
             'total_ask_price', 
