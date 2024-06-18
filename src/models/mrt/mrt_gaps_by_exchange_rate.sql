@@ -42,18 +42,23 @@ gaps_metrics as (
         exchange_rate_name in {{ top_cripto_exchanges }} as is_top_cripto_exchanges,
 
         {{ dbt_utils.safe_divide(
+            'total_ask_price', 
+            'total_bid_price'
+        ) }} - 1 as spread,
+
+        {{ dbt_utils.safe_divide(
             'total_bid_price', 
             'official_retailer_dollar'
-        ) }} -1 as gap_over_official_retailer_exchange_rate,
+        ) }} - 1 as gap_over_official_retailer_exchange_rate,
 
         {{ dbt_utils.safe_divide('
             total_bid_price', 
             'official_wholesale_dollar'
-        ) }} -1 as gap_over_official_wholesale_exchange_rate,
+        ) }} - 1 as gap_over_official_wholesale_exchange_rate,
 
         {{ dbt_utils.safe_divide(
             'total_bid_price', 'avg_mep_dollar'
-        ) }} -1 as gap_over_mep_exchange_rate,
+        ) }} - 1 as gap_over_mep_exchange_rate,
 
         max(
             iff(
