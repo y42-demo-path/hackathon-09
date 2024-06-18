@@ -29,8 +29,9 @@ def business_alert(context,assets):
     ]
     
     filtered_data = most_recent_data[(most_recent_data['IS_TOP_CRIPTO_EXCHANGES']) | 
-                                (~most_recent_data['SOURCE_REFERENCE'].isin(['Criptoya - Cripto']))]
-
+                                (~most_recent_data['SOURCE_REFERENCE'].isin(['Criptoya - Cripto'])) |
+                                (most_recent_data['SOURCE_REFERENCE'].isin(['Binance P2P'])) 
+                                ]
 
     general_exchange_report = filtered_data[['EXCHANGE_RATE_NAME', 'TOTAL_BID_PRICE', 'CHANGE_TOTAL_BID_PRICE']]
     general_exchange_report['TOTAL_BID_PRICE'] = round(general_exchange_report['TOTAL_BID_PRICE'], 2)
@@ -98,7 +99,7 @@ def business_alert(context,assets):
     if not high_official_mep.empty:
         # Send a POST request to the Slack webhook URL with the message payload.
 
-        for i, j in high_official_gap.iterrows():
+        for i, j in high_official_mep.iterrows():
 
             exchange_name = j['EXCHANGE_RATE_NAME']
             mep_gap_value = round(j['GAP_OVER_MEP_EXCHANGE_RATE'] * 100, 2)
