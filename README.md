@@ -56,6 +56,13 @@ Several stage models handle data transformations from the source. Below is an ex
 
 
 -   **retl_google_sheet**: As Snowflake credentials were not available, an R-ETL process was created to send data to a Google Sheet, allowing for any additional analytical analysis (charts, pivot tables, etc.). Kudos to **Rob** for providing this piece of code.
+  
+#### 📈 Visualizations and Analysis 
+
+Using the data available in Google Sheets, several charts were created and included in a [Notion document](https://www.notion.so/Analysis-of-the-Argentine-Exchange-Rate-Market-02f61df72eaa433993fbeda328c2c4c4). This document highlights the key insights derived from the data.
+
+![Untitled](https://github.com/y42-demo-path/hackathon-09/assets/67651418/0df32461-9b5d-4d7c-a86c-017f703b8f68)
+
 
 #### 📑 Quality Testing and Descriptions
 
@@ -72,3 +79,4 @@ Tests were created to ensure that IDs were unique and did not contain null value
 -   [dbt utils](https://github.com/dbt-labs/dbt-utils)
 - [Notifications Alert Channel](https://exchangeraten-lky6868.slack.com/archives/C0768D5U9K3)
 - [Google Sheet Link](https://docs.google.com/spreadsheets/d/1p8Rajxx5f490urjZGIUR0qbkI6bJHom-z3JVObqyUcI/edit?gid=0#gid=0)
+- [Notion Document with Analysis](https://www.notion.so/Analysis-of-the-Argentine-Exchange-Rate-Market-02f61df72eaa433993fbeda328c2c4c4)
