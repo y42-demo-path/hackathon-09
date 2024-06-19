@@ -61,7 +61,8 @@ Several stage models handle data transformations from the source. Below is an ex
 
 Using the data available in Google Sheets, several charts were created and included in a [Notion document](https://www.notion.so/Analysis-of-the-Argentine-Exchange-Rate-Market-02f61df72eaa433993fbeda328c2c4c4). This document highlights the key insights derived from the data.
 
-![Untitled](https://github.com/y42-demo-path/hackathon-09/assets/67651418/0df32461-9b5d-4d7c-a86c-017f703b8f68)
+![image](https://github.com/y42-demo-path/hackathon-09/assets/67651418/0f2ab013-b74f-4c0c-b770-521ad2e5ad10)
+
 
 
 #### 📑 Quality Testing and Descriptions
