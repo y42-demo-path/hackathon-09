@@ -59,7 +59,7 @@ Several stage models handle data transformations from the source. Below is an ex
   
 #### 📈 Visualizations and Analysis 
 
-Using the data available in Google Sheets, several charts were created and included in a [Notion document](https://www.notion.so/Analysis-of-the-Argentine-Exchange-Rate-Market-02f61df72eaa433993fbeda328c2c4c4). This document highlights the key insights derived from the data.
+Using the data available in Google Sheets, several charts were created and included in a [Notion document](https://grizzled-squid-ff4.notion.site/Analysis-of-the-Argentine-Exchange-Rate-Market-02f61df72eaa433993fbeda328c2c4c4). This document highlights the key insights derived from the data.
 
 ![image](https://github.com/y42-demo-path/hackathon-09/assets/67651418/0f2ab013-b74f-4c0c-b770-521ad2e5ad10)
 
@@ -80,4 +80,4 @@ Tests were created to ensure that IDs were unique and did not contain null value
 -   [dbt utils](https://github.com/dbt-labs/dbt-utils)
 - [Notifications Alert Channel](https://exchangeraten-lky6868.slack.com/archives/C0768D5U9K3)
 - [Google Sheet Link](https://docs.google.com/spreadsheets/d/1p8Rajxx5f490urjZGIUR0qbkI6bJHom-z3JVObqyUcI/edit?gid=0#gid=0)
-- [Notion Document with Analysis](https://www.notion.so/Analysis-of-the-Argentine-Exchange-Rate-Market-02f61df72eaa433993fbeda328c2c4c4)
+- [Notion Document with Analysis](https://grizzled-squid-ff4.notion.site/Analysis-of-the-Argentine-Exchange-Rate-Market-02f61df72eaa433993fbeda328c2c4c4)
