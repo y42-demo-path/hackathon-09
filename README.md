@@ -81,3 +81,4 @@ Tests were created to ensure that IDs were unique and did not contain null value
 - [Notifications Alert Channel](https://exchangeraten-lky6868.slack.com/archives/C0768D5U9K3)
 - [Google Sheet Link](https://docs.google.com/spreadsheets/d/1p8Rajxx5f490urjZGIUR0qbkI6bJHom-z3JVObqyUcI/edit?gid=0#gid=0)
 - [Notion Document with Analysis](https://grizzled-squid-ff4.notion.site/Analysis-of-the-Argentine-Exchange-Rate-Market-02f61df72eaa433993fbeda328c2c4c4)
+- [Y42 Feedback](https://docs.google.com/document/d/1muiGE6DlbrxAiXuAAR_0l87OWn-LNXj8AVtpaHfMpYM/edit)
