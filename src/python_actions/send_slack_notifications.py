@@ -30,7 +30,7 @@ def business_alert(context,assets):
     
     filtered_data = most_recent_data[(most_recent_data['IS_TOP_CRIPTO_EXCHANGES']) | 
                                 (~most_recent_data['SOURCE_REFERENCE'].isin(['Criptoya - Cripto'])) |
-                                (most_recent_data['SOURCE_REFERENCE'].isin(['Binance P2P'])) 
+                                (most_recent_data['EXCHANGE_RATE_NAME'].isin(['Binance P2P'])) 
                                 ]
 
     general_exchange_report = filtered_data[['EXCHANGE_RATE_NAME', 'TOTAL_BID_PRICE', 'CHANGE_TOTAL_BID_PRICE']]
