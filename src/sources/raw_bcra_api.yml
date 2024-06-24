@@ -23,7 +23,10 @@ sources:
           - name: idVariable
             description: "Unique ID of the entity."
             data_type: NUMBER
-            tests: []
+            tests:
+              - not_null:
+                  config:
+                    severity: error
           - name: valor
             description: "Value of the indicator to date."
             data_type: FLOAT
