@@ -1,4 +1,4 @@
-# 💸 Monitoring Parallel Market Exchange Rate in Argentina 
+# 💸 Monitoring Market Exchange Rates in Argentina 
 ## Introduction
 
 The goal of this project was to monitor the premium among several exchange rates in Argentina in near real-time. Tracking the differences amoung the official exchange rate and the free market dollars is crucial because it reflects devaluation expectations. As economic agents make anticipatory decisions, any significant deviation can impact other economic variables, such as inflation. It is important to mention that the foreign exchange market remains controlled despite the new government, and the regulations and restrictions remain quite similar to those of the previous government.
