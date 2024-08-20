@@ -3,6 +3,6 @@ version: 2
 orchestrations:
   - name: exchange_rates_scheduled_build
     config:
-      enabled: true
+      enabled: false
       command: y42 build -s +exposure:send_slack_notifications
       cron: "*/30 14-21 * * 1-5"
